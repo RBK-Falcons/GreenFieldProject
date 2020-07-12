@@ -1,6 +1,6 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Lato&family=Lobster&family=Roboto&family=Source+Sans+Pro&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Lato&family=Lobster&family=Roboto&family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap");
 
 /* ========================== Start Teacher Style ========================== */
 
@@ -12,6 +12,9 @@
   width: 1200px;
   margin: auto;
   position: relative;
+}
+.clearFix {
+  clear: both;
 }
 
 .table {
@@ -34,8 +37,7 @@
   color: #ea907a;
 }
 
-,
-main-background {
+.main-background {
   background-color: #ea907a;
 }
 
@@ -71,7 +73,7 @@ main-background {
   width: 100%;
   font-size: 40px;
   font-weight: 800;
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
 }
 
 .header .navbar .links {
@@ -82,7 +84,7 @@ main-background {
 }
 .header .intro {
   margin-top: 10%;
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
 }
 .header .intro .wl {
   padding: 20px 0;
@@ -90,7 +92,7 @@ main-background {
   text-transform: capitalize;
   font-size: 50px;
   font-weight: 800;
-  font-family: 'Fondamento', cursive;
+  font-family: "Fondamento", cursive;
 }
 .header .intro .wl span {
   color: #fff !important;
@@ -188,20 +190,101 @@ main-background {
   text-transform: uppercase;
   font-weight: bolder;
   color: #fff;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .features .box p {
   color: #fff;
   line-height: 1.9;
-  font-family: 'Cabin', sans-serif;
+  font-family: "Cabin", sans-serif;
 }
+/* This for videos adding */
 
 .feat {
   display: none;
 }
-
-.active {
+.feat h4 {
+  color: #e07b62;
+  font-family: "Cabin", sans-serif;
+  font-weight: 800;
+}
+.feat .h1 {
+  text-transform: capitalize;
+  width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.feat .course-tabs .sections {
+  overflow: hidden;
+}
+.feat .course-tabs .sections div {
+  float: left;
+  width: 30.3333%;
+  border: 2px solid #f1d5b1;
+  padding: 15px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: "Cabin", sans-serif;
+  font-size: 22px;
+  /* box-shadow: 5px 5px 10px #fbc687; */
+  border-radius: 10px;
+  background-color: #fbc687;
+  color: rgb(75, 71, 71);
+  font-weight: 800;
+}
+.feat .course-tabs .sections div:hover {
+  /* margin-top: -7px; */
+  background-color: #aacdbe;
+  border: 2px solid #97a8a1;
+  box-shadow: 5px 5px 8px #aacdbe;
+  color: #000;
+}
+.feat .course-tabs .sections div:not(:last-child) {
+  margin-right: 4.1%;
+}
+.feat .course-tabs section {
+  margin-bottom: 40px;
+  border: 1px solid #fbc687;
+  padding: 50px 300px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 15px #fbc687;
+  display: none;
+}
+.feat .course-tabs section > div {
+  display: none;
+}
+.feat .course-tabs section .active {
   display: block;
+}
+.feat .course-tabs section #add div .form-control {
+  height: 40px;
+  width: 80%;
+  margin: auto;
+  font-size: 17px;
+}
+.feat .course-tabs section #add div {
+  text-align: left;
+}
+.feat .course-tabs section #add div label {
+  padding-left: 55px;
+}
+.feat .course-tabs section #add div textarea {
+  height: 160px !important;
+  width: 80% !important;
+}
+.feat .course-tabs section #add div .form-control:focus {
+  border: 2px solid #fbc687;
+  box-shadow: none;
+}
+.feat .course-tabs section #add div .form-control::-webkit-input-placeholder {
+  color: rgb(158, 157, 157);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.feat .course-tabs section #add button {
+  display: block;
+  width: 80%;
+  margin: auto;
 }
 
 /* End Features */
