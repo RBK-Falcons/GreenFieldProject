@@ -172,6 +172,14 @@ $(document).ready(function () {
       $('.scrollspy-example').slideUp();
     }
   });
+
+  $('span.list-group-item').click(function () {
+    $(this).css({
+      background: '#fbc687'
+    }).siblings().css({
+      background: '#fff'
+    })
+  })
 });
 
 /* End jQuery Code */
