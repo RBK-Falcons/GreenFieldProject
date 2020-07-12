@@ -1,0 +1,218 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Lato&family=Lobster&family=Roboto&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap');
+
+/* ========================== Start Teacher Style ========================== */
+
+/* Start Our Framework */
+* {
+  box-sizing: border-box;
+}
+.container {
+  width: 1200px;
+  margin: auto;
+  position: relative;
+}
+
+.table {
+  height: 100%;
+  display: table;
+}
+
+.table-row {
+  display: table-row;
+}
+.text-center {
+  text-align: center;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.main-color {
+  color: #ea907a;
+}
+
+,
+main-background {
+  background-color: #ea907a;
+}
+
+.overlay {
+  background: rgba(49, 55, 61, 0.7);
+  width: 100%;
+  height: 100%;
+}
+.hidden {
+  display: none;
+}
+/* End Our Framework */
+
+/* Start Header */
+
+.landing .header {
+  background: url(./img/slide-1.jpg);
+  background-size: cover;
+  color: #fff;
+}
+.teacher .header {
+  background: url(./img/test.jpg) no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+
+.header .navbar {
+  overflow: hidden;
+  padding: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-size: 40px;
+  font-weight: 800;
+  font-family: 'Cabin', sans-serif;
+}
+
+.header .navbar .links {
+  float: right;
+}
+.header .navbar .links i {
+  margin-left: 5px;
+}
+.header .intro {
+  margin-top: 10%;
+  font-family: 'Cabin', sans-serif;
+}
+.header .intro .wl {
+  padding: 20px 0;
+  width: 100%;
+  text-transform: capitalize;
+  font-size: 50px;
+  font-weight: 800;
+  font-family: 'Fondamento', cursive;
+}
+.header .intro .wl span {
+  color: #fff !important;
+}
+.header .intro h1 {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 800;
+}
+.header .intro p {
+  margin: 10px 0 40px;
+  line-height: 1.9;
+  font-size: 20px;
+  color: #e2e2e2;
+}
+.header .buttons a {
+  background: transparent;
+  padding: 10px 50px;
+  width: 180px;
+  font-size: 14px;
+  border: 1px solid #909090;
+  margin: 0 8px;
+  border-radius: 10px;
+  color: #f4f7c5;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.header .buttons a:hover {
+  background-color: #fbc687;
+  border: 1px solid #fbc687;
+  color: #000;
+  text-decoration: none;
+}
+.header .arrow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  line-height: 20px;
+}
+.header .arrow svg {
+  border: 2px solid #f4f7c5;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  padding: 2px;
+}
+/* End Header */
+
+/* Start Features */
+
+.features {
+  padding: 0;
+  margin-bottom: 50px;
+}
+.features .box {
+  float: left;
+  width: 32.3333%;
+  background-color: #ea907a;
+  border-radius: 8px;
+  padding: 10px;
+  padding-left: 30px;
+  box-shadow: 5px 5px 8px #ea907a;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: -40px;
+  border: 3px solid #e07b62;
+}
+.features .box:not(:last-child) {
+  margin-right: 1%;
+}
+.features .box:hover {
+  background-color: #aacdbe;
+  margin-top: -50px;
+  border: 3px solid #97a8a1;
+  box-shadow: 5px 5px 8px #aacdbe;
+}
+.features .box svg {
+  color: #fff;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  padding: 20px;
+  float: right;
+  margin-top: 15px;
+}
+
+.features .box h3 {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+.features .box p {
+  color: #fff;
+  line-height: 1.9;
+  font-family: 'Cabin', sans-serif;
+}
+
+.feat {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/* End Features */
+
+/* Start Footer */
+
+footer {
+  padding: 12px 0;
+  background-color: #ccc;
+}
+
+/* End Footer */
+
+/* ========================== Start Teacher Style ========================== */
