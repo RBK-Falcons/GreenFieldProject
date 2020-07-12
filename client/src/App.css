@@ -285,6 +285,10 @@
   display: block;
   width: 80%;
   margin: auto;
+  color: rgb(75, 71, 71);
+  font-weight: 800;
+  font-family: "Cabin", sans-serif;
+  font-size: 22px;
 }
 
 /* End Features */

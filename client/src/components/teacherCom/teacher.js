@@ -31,7 +31,7 @@ class Teacher extends React.Component {
     e.preventDefault();
     const { title, type, videoUrl, description } = this.state;
     axios
-      .post('/api/users/createUser', {
+      .post('/api/', {
         title, type, videoUrl, description
       })
       .then(res => {
@@ -63,15 +63,15 @@ class Teacher extends React.Component {
                 </div>
               </div>
             </div>
-            {/* <span class="arrow">
-                            <FontAwesomeIcon icon={faChevronDown} />
-                        </span> */}
           </div>
         </div>
 
         {/* End Header */}
 
         {/* Start Our Features */}
+
+
+        {/* Start Main Feature */}
 
         <div className="features">
           <div className="container">
@@ -102,15 +102,22 @@ class Teacher extends React.Component {
           </div>
         </div>
 
+        {/* End Main Feature */}
 
 
         <div className="container">
+
+          {/* Start First Feature Added Courses */}
+
           <div id="courses" className="feat text-center active">
             <h4>Courses</h4>
             <p className="h1">
               In this section you can edit, delete or add videos
             </p>
             <div className="course-tabs">
+
+              {/* Start Section Courses */}
+
               <div className="sections">
                 <div className="vid" data-section="#add">
                   <FontAwesomeIcon icon={faPlusCircle} /> Add Video
@@ -122,12 +129,19 @@ class Teacher extends React.Component {
                   <FontAwesomeIcon icon={faEdit} /> Edit Video
                 </div>
               </div>
+
+              {/* End Section Courses */}
+
               <section>
+
+                {/* Start Added Video Feature */}
+
                 <div id="add">
                   <form onSubmit={this.handleSubmit.bind(this)}>
                     <div className="form-group" >
                       <label>Enter Video Title</label>
                       <input
+                        required
                         type="text"
                         name="title"
                         className="form-control"
@@ -139,6 +153,7 @@ class Teacher extends React.Component {
                     <div className="form-group">
                       <label>Enter Video Type</label>
                       <input
+                        required
                         type="text"
                         name="type"
                         className="form-control"
@@ -149,6 +164,7 @@ class Teacher extends React.Component {
                     <div className="form-group">
                       <label>Enter Video URL</label>
                       <input
+                        required
                         type="text"
                         name="videoUrl"
                         className="form-control"
@@ -160,6 +176,7 @@ class Teacher extends React.Component {
                     <div className="form-group">
                       <label>Enter Video Description</label>
                       <textarea
+                        required
                         name="description"
                         placeholder="Enter Video Description"
                         className="form-control"
@@ -171,6 +188,10 @@ class Teacher extends React.Component {
                     </button>
                   </form>
                 </div>
+
+                {/* End Added Video Feature  */}
+
+
                 <div id="view" >
                   <h2>view Video</h2>
                 </div>
@@ -180,6 +201,9 @@ class Teacher extends React.Component {
               </section>
             </div>
           </div>
+
+          {/* End First Feature Added Courses */}
+
           <div id="questions" className="feat">
             <h1>feature two</h1>
           </div>
@@ -213,15 +237,15 @@ $(document).ready(function () {
   // Main Features tab
   $(".features .box").click(function () {
     var feat = $(this).data("feat");
-    $(feat).show().siblings().hide();
+    $(feat).slideDown().siblings().slideUp();
   });
 
   // Section Of Features Tab
 
   $('.feat .course-tabs .sections .vid').click(function () {
     var section = $(this).data("section");
-    $(section).parent().show()
-    $(section).show().siblings().hide();
+    $(section).parent().slideDown()
+    $(section).slideDown().siblings().slideUp();
     console.log(section);
   });
 });
