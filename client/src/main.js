@@ -65,7 +65,7 @@ $(document).ready(function () {
   //     }
   // })
 
-  // Starting Work With GitHub API
+  // Starting Work With GitHub API (For lating)
 
   //   let theInput = document.querySelector('.repos-container .get-repos input');
   //   let reposData = document.querySelector('.repos-container .show-data');
