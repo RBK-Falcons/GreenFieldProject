@@ -9,8 +9,14 @@ import Teacher from './components/teacherCom/teacher';
 import Landing from './components/landing/landing';
 import Student from './components/studentCom/students';
 
+//Redux
+import {Provider} from 'react-redux'
+import store from './store'
+
+
 function App() {
   return (
+    <Provider store={store}>
     <Router>
       <div className='App'>
         <Switch>
@@ -22,6 +28,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </Provider>
   );
 }
 
