@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +10,18 @@ import { faUniversity } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+=======
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSpellCheck } from "@fortawesome/free-solid-svg-icons";
+import { faFilm } from "@fortawesome/free-solid-svg-icons";
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faUniversity } from "@fortawesome/free-solid-svg-icons";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> 3586ae3c00266e0a01fb9ea8ad50175d0cba9fd4
 import axios from 'axios';
 
 class Teacher extends React.Component {
@@ -209,6 +222,7 @@ class Teacher extends React.Component {
 
 export default Teacher;
 
+<<<<<<< HEAD
 $(document).ready(function () {
   // Change Header Height
 
@@ -229,3 +243,5 @@ $(document).ready(function () {
     console.log(section);
   });
 });
+=======
+>>>>>>> 3586ae3c00266e0a01fb9ea8ad50175d0cba9fd4
