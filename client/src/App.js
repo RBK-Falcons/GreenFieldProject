@@ -8,8 +8,14 @@ import Signup from './components/auth/signup';
 import Teacher from './components/teacherCom/teacher';
 import Landing from './components/landing/landing';
 
+//Redux
+import {Provider} from 'react-redux'
+import store from './store'
+
+
 function App() {
   return (
+    <Provider store={store}>
     <Router>
       <div className='App'>
         <Switch>
@@ -20,6 +26,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </Provider>
   );
 }
 
