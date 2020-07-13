@@ -1,6 +1,4 @@
 import React from "react";
-import $ from 'jquery';
-
 
 class Landing extends React.Component {
     state = {}
@@ -40,11 +38,3 @@ class Landing extends React.Component {
 }
 
 export default Landing;
-
-$(document).ready(function () {
-
-    // Change Header Height
-
-    $('.header').height($(window).height());
-
-})

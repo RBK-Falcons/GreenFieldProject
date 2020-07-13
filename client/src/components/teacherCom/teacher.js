@@ -1,5 +1,4 @@
 import React from "react";
-import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faSpellCheck } from "@fortawesome/free-solid-svg-icons";
@@ -222,30 +221,10 @@ class Teacher extends React.Component {
           Copyright &copy; <span>EduMe</span> 2020
         </footer>
         {/* Start Footer */}
-      </div >
+      </div>
     );
   }
 }
 
 export default Teacher;
 
-$(document).ready(function () {
-  // Change Header Height
-
-  $(".header").height($(window).height());
-
-  // Main Features tab
-  $(".features .box").click(function () {
-    var feat = $(this).data("feat");
-    $(feat).slideDown().siblings().slideUp();
-  });
-
-  // Section Of Features Tab
-
-  $('.feat .course-tabs .sections .vid').click(function () {
-    var section = $(this).data("section");
-    $(section).parent().slideDown()
-    $(section).slideDown().siblings().slideUp();
-    console.log(section);
-  });
-});
