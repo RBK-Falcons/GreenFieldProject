@@ -9,11 +9,15 @@ const { route } = require('./users');
 
 router.post('/addCourse', async (req, res) => {
   const { title, type, videoUrl, description } = req.body;
+  const vId = videoUrl.substr(32, 11);
+  var x = 'https://www.youtube.com/embed/' + vId;
+  const videoImg = 'https://img.youtube.com/vi/' + vId + '/0.jpg';
   let course = new Course({
     title,
     type,
-    videoUrl,
+    videoUrl: x,
     description,
+    videoImg,
   });
   try {
     await course.save();
