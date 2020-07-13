@@ -5,8 +5,41 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
+import $ from 'jquery';
+
 class Student extends React.Component {
-  state = {};
+  state = {
+    videos: [],
+  };
+
+  getAllVideos() {
+    axios
+      .get('/api/courses')
+      .then(response => {
+        this.setState({
+          videos: response.data,
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  getCustomVideos(e) {
+    var type = $(e.target)[0].dataset.filter.slice(1);
+    axios
+      .get(`/api/courses/${type}`)
+      .then(response => {
+        this.setState({
+          videos: response.data,
+        });
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
   render() {
     return (
       <div className='students'>
@@ -68,40 +101,57 @@ class Student extends React.Component {
             <div className='course-videos'>
               {/* Start Section Courses */}
               <div className='sections'>
-                <div data-filter='.all'>All Categories</div>
-                <div data-filter='.technical-skills'>Technical Skills</div>
-                <div data-filter='.non-technical'>Non-Technical</div>
-                <div data-filter='.other'>Other</div>
+                <div data-filter='.all' onClick={this.getAllVideos.bind(this)}>
+                  All Categories
+                </div>
+                <div
+                  data-filter='.technical-skills'
+                  onClick={this.getCustomVideos.bind(this)}
+                >
+                  Technical Skills
+                </div>
+                <div
+                  data-filter='.non-technical'
+                  onClick={this.getCustomVideos.bind(this)}
+                >
+                  Non-Technical
+                </div>
+                <div
+                  data-filter='.other'
+                  onClick={this.getCustomVideos.bind(this)}
+                >
+                  Other
+                </div>
               </div>
               {/* End Section Courses */}
               <section>
-                <table className='other'>
-                  <tbody>
-                    <tr>
-                      <td className='video'>
-                        <a
-                          className='video-popup'
-                          href='#'
-                          data-media='https://www.youtube.com/embed/kihxoUcFf9Y'
-                        >
-                          <div className='play-icon-wrap'>
-                            <div className='play-icon'>
-                              <FontAwesomeIcon icon={faPlayCircle} />
-                            </div>
-                          </div>
-                          <img
-                            src='https://img.youtube.com/vi/kihxoUcFf9Y/0.jpg'
-                            width='100%'
-                            alt=''
-                          />
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th className='videos'>This Place For Video Title</th>
-                    </tr>
-                  </tbody>
-                </table>
+                {this.state.videos.map(video => {
+                  return (
+                    <table className='other'>
+                      <tbody>
+                        <tr>
+                          <td className='video'>
+                            <a
+                              className='video-popup'
+                              href='#'
+                              data-media={video.videoUrl + ''}
+                            >
+                              <div className='play-icon-wrap'>
+                                <div className='play-icon'>
+                                  <FontAwesomeIcon icon={faPlayCircle} />
+                                </div>
+                              </div>
+                              <img src={video.videoImg} width='100%' alt='' />
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className='videos'>{video.title}</th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  );
+                })}
                 {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/kihxoUcFf9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
               </section>
             </div>
