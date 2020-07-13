@@ -113,13 +113,13 @@ class Student extends React.Component {
                     {/* Start Github Repos Feature */}
                     <div id="students" className="feat">
 
-                        <div className="repos-container">
+                        {/* <div className="repos-container">
                             <div className="get-repos">
                                 <input type="text" value="hackreactor" hidden />
                             </div>
                             <div className="show-data">
                             </div>
-                        </div>
+                        </div> */}
 
                     </div>
                     {/* End Github Repos Feature */}

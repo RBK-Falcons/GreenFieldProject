@@ -79,50 +79,50 @@ $(document).ready(function () {
     // this function for get repos
     function getRepos() {
 
-        fetch(`https://api.github.com/users/${theInput.value}/repos`)
+        // fetch(`https://api.github.com/users/${theInput.value}/repos`)
 
-            .then((response) => response.json())
+        //     .then((response) => response.json())
 
-            .then((repos) => {
+        //     .then((repos) => {
 
-                repos.forEach(repo => {
+        //         repos.forEach(repo => {
 
-                    let mainDiv = document.createElement("div");
-                    let repoName = document.createTextNode(repo.name);
+        //             let mainDiv = document.createElement("div");
+        //             let repoName = document.createTextNode(repo.name);
 
-                    mainDiv.appendChild(repoName);
+        //             mainDiv.appendChild(repoName);
 
-                    let theUrl = document.createElement('a');
-                    let theUrlText = document.createTextNode("Visit");
+        //             let theUrl = document.createElement('a');
+        //             let theUrlText = document.createTextNode("Visit");
 
-                    theUrl.appendChild(theUrlText);
+        //             theUrl.appendChild(theUrlText);
 
-                    theUrl.href = `https://github.com/${theInput.value}/${repo.name}`;
+        //             theUrl.href = `https://github.com/${theInput.value}/${repo.name}`;
 
-                    theUrl.setAttribute('target', '_blank');
+        //             theUrl.setAttribute('target', '_blank');
 
-                    mainDiv.appendChild(theUrl);
+        //             mainDiv.appendChild(theUrl);
 
-                    let starsSpan = document.createElement("span");
+        //             let starsSpan = document.createElement("span");
 
-                    let starsText = document.createTextNode(`Stars : ${repo.stargazers_count}`);
-                    let forksSpan = document.createElement("span");
+        //             let starsText = document.createTextNode(`Stars : ${repo.stargazers_count}`);
+        //             let forksSpan = document.createElement("span");
 
-                    // <i class="fas fa-code-branch"></i>
-                    let forksText = document.createTextNode(`Forks : ${repo.forks}`);
+        //             // <i class="fas fa-code-branch"></i>
+        //             let forksText = document.createTextNode(`Forks : ${repo.forks}`);
 
-                    starsSpan.appendChild(starsText);
-                    forksSpan.appendChild(forksText);
-                    mainDiv.appendChild(starsSpan);
-                    mainDiv.appendChild(forksSpan);
+        //             starsSpan.appendChild(starsText);
+        //             forksSpan.appendChild(forksText);
+        //             mainDiv.appendChild(starsSpan);
+        //             mainDiv.appendChild(forksSpan);
 
-                    mainDiv.className = 'repo-box';
+        //             mainDiv.className = 'repo-box';
 
-                    reposData.appendChild(mainDiv);
+        //             reposData.appendChild(mainDiv);
 
-                });
+        //         });
 
-            });
+        //     });
 
 
 
