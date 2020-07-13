@@ -24,16 +24,34 @@ router.post('/addCourse', async (req, res) => {
   }
 });
 
+// @route GET All courses /api/courses
 router.get('/', async (req, res) => {
   let courses = await Course.find({})
     .then(response => {
       if (response.length == 0) {
+        // The error thrown when there is no data in the response
         throw error;
       }
       res.send(response);
     })
     .catch(err => {
-      res.send('There is no courses');
+      res.status(500).send('Server error');
+    });
+});
+
+// @route GET courses with same title /api/courses/:title
+router.get('/:type', async (req, res) => {
+  const { type } = req.params;
+  let courses = await Course.find({ type })
+    .then(response => {
+      if (response.length == 0) {
+        // The error thrown when there is no data in the response
+        throw error;
+      }
+      res.send(response);
+    })
+    .catch(err => {
+      res.status(500).send('Server error');
     });
 });
 

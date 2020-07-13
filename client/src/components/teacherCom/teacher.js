@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 import React from 'react';
-import $ from 'jquery';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSpellCheck } from '@fortawesome/free-solid-svg-icons';
@@ -10,19 +8,8 @@ import { faUniversity } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-=======
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTachometerAlt } from "@fortawesome/free-solid-svg-icons";
-import { faSpellCheck } from "@fortawesome/free-solid-svg-icons";
-import { faFilm } from "@fortawesome/free-solid-svg-icons";
-import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
-import { faUniversity } from "@fortawesome/free-solid-svg-icons";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
->>>>>>> 3586ae3c00266e0a01fb9ea8ad50175d0cba9fd4
 import axios from 'axios';
+// import $ from 'jquery';
 
 class Teacher extends React.Component {
   state = {
@@ -221,27 +208,3 @@ class Teacher extends React.Component {
 }
 
 export default Teacher;
-
-<<<<<<< HEAD
-$(document).ready(function () {
-  // Change Header Height
-
-  $('.header').height($(window).height());
-
-  // Main Features tab
-  $('.features .box').click(function () {
-    var feat = $(this).data('feat');
-    $(feat).show().siblings().hide();
-  });
-
-  // Section Of Features Tab
-
-  $('.feat .course-tabs .sections .vid').click(function () {
-    var section = $(this).data('section');
-    $(section).parent().show();
-    $(section).show().siblings().hide();
-    console.log(section);
-  });
-});
-=======
->>>>>>> 3586ae3c00266e0a01fb9ea8ad50175d0cba9fd4
