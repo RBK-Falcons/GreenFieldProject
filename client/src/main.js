@@ -1,119 +1,138 @@
-// import jQuery
+// import jQuery 
 import $ from 'jquery';
 
 $(document).ready(function () {
-  // Change Header Height
+    // Change Header Height
 
-  $('.header').height($(window).height());
+    $(".header").height($(window).height());
 
-  // Main Features tab
-  $('.features .box').click(function () {
-    var feat = $(this).data('feat');
-    $(feat).slideDown().siblings().slideUp();
-  });
+    // Main Features tab
+    $(".features .box").click(function () {
+        var feat = $(this).data("feat");
+        $(feat).slideDown().siblings().slideUp();
+    });
 
-  // Section Of Features Tab
+    // Section Of Features Tab
 
-  $('.teacher .feat .course-tabs .sections .vid').click(function () {
-    var section = $(this).data('section');
-    $(section).parent().slideDown();
-    $(section).slideDown().siblings().slideUp();
-    console.log(section);
-  });
+    $('.teacher .feat .course-tabs .sections .vid').click(function () {
+        var section = $(this).data("section");
+        $(section).parent().slideDown()
+        $(section).slideDown().siblings().slideUp();
+        console.log(section);
+    });
 
-  // Pop Up Videos In Student Page (Courses)
 
-  $('.video-popup').on('click', function (e) {
-    e.preventDefault();
-    var videoUrl = $(this).attr('data-media');
-    var popupIframe = $('#popup-frame');
 
-    popupIframe.attr('src', videoUrl);
-    $('.popup').addClass('show-popup');
-  });
 
-  $('.popup').on('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+    // Pop Up Videos In Student Page (Courses)
 
-    $('#popup-frame').attr('src', '');
-    $('.popup').removeClass('show-popup');
-  });
+    $('.video-popup').on('click', function (e) {
+        e.preventDefault();
+        var videoUrl = $(this).attr('data-media');
+        var popupIframe = $('#popup-frame');
 
-  $('.popup > iframe').on('click', function (e) {
-    e.stopPropagation();
-  });
+        popupIframe.attr("src", videoUrl);
+        $(".popup").addClass("show-popup");
+    })
 
-  // Trigger MixitUp
-  // $('.feat .course-videos .sections div').click(function () {
-  //     var type = $(this).data('filter')
-  //     console.log(type)
-  //     if (type == 'all') {
-  //         $('.feat .course-videos section ').show()
-  //     } else if (type == 'technical-skills') {
-  //         $('.' + type).show().siblings().hide()
-  //     } else if (type == 'non-technical') {
-  //         $('.' + type).show().siblings().hide()
-  //     } else if (type == 'other') {
-  //         $('.' + type).show().siblings().hide()
-  //     }
-  // })
+    $(".popup").on("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
-  // var mixer = mixitup('.feat .course-videos section', {
-  //     animation: {
-  //         effectsOut: 'fade translateX(-100%)'
-  //     }
-  // })
+        $('#popup-frame').attr('src', '');
+        $(".popup").removeClass("show-popup");
+    });
 
-  // Starting Work With GitHub API
+    $(".popup > iframe").on("click", function (e) {
+        e.stopPropagation();
+    });
 
-  //   let theInput = document.querySelector('.repos-container .get-repos input');
-  //   let reposData = document.querySelector('.repos-container .show-data');
 
-  //   // this function for get repos
-  //   function getRepos() {
-  //     fetch(`https://api.github.com/users/${theInput.value}/repos`)
-  //       .then(response => response.json())
+    // Trigger MixitUp
+    // $('.feat .course-videos .sections div').click(function () {
+    //     var type = $(this).data('filter')
+    //     console.log(type)
+    //     if (type == 'all') {
+    //         $('.feat .course-videos section ').show()
+    //     } else if (type == 'technical-skills') {
+    //         $('.' + type).show().siblings().hide()
+    //     } else if (type == 'non-technical') {
+    //         $('.' + type).show().siblings().hide()
+    //     } else if (type == 'other') {
+    //         $('.' + type).show().siblings().hide()
+    //     }
+    // })
 
-  //       .then(repos => {
-  //         repos.forEach(repo => {
-  //           let mainDiv = document.createElement('div');
-  //           let repoName = document.createTextNode(repo.name);
+    // var mixer = mixitup('.feat .course-videos section', {
+    //     animation: {
+    //         effectsOut: 'fade translateX(-100%)'
+    //     }
+    // })
 
-  //           mainDiv.appendChild(repoName);
 
-  //           let theUrl = document.createElement('a');
-  //           let theUrlText = document.createTextNode('Visit');
+    // Starting Work With GitHub API
 
-  //           theUrl.appendChild(theUrlText);
+    let theInput = document.querySelector('.repos-container .get-repos input');
+    let reposData = document.querySelector('.repos-container .show-data');
 
-  //           theUrl.href = `https://github.com/${theInput.value}/${repo.name}`;
 
-  //           theUrl.setAttribute('target', '_blank');
+    // this function for get repos
+    function getRepos() {
 
-  //           mainDiv.appendChild(theUrl);
+        // fetch(`https://api.github.com/users/${theInput.value}/repos`)
 
-  //           let starsSpan = document.createElement('span');
+        //     .then((response) => response.json())
 
-  //           let starsText = document.createTextNode(
-  //             `Stars : ${repo.stargazers_count}`
-  //           );
-  //           let forksSpan = document.createElement('span');
+        //     .then((repos) => {
 
-  //           // <i class="fas fa-code-branch"></i>
-  //           let forksText = document.createTextNode(`Forks : ${repo.forks}`);
+        //         repos.forEach(repo => {
 
-  //           starsSpan.appendChild(starsText);
-  //           forksSpan.appendChild(forksText);
-  //           mainDiv.appendChild(starsSpan);
-  //           mainDiv.appendChild(forksSpan);
+        //             let mainDiv = document.createElement("div");
+        //             let repoName = document.createTextNode(repo.name);
 
-  //           mainDiv.className = 'repo-box';
+        //             mainDiv.appendChild(repoName);
 
-  //           reposData.appendChild(mainDiv);
-  //         });
-  //       });
-  //   }
+        //             let theUrl = document.createElement('a');
+        //             let theUrlText = document.createTextNode("Visit");
 
-  //   getRepos();
+        //             theUrl.appendChild(theUrlText);
+
+        //             theUrl.href = `https://github.com/${theInput.value}/${repo.name}`;
+
+        //             theUrl.setAttribute('target', '_blank');
+
+        //             mainDiv.appendChild(theUrl);
+
+        //             let starsSpan = document.createElement("span");
+
+        //             let starsText = document.createTextNode(`Stars : ${repo.stargazers_count}`);
+        //             let forksSpan = document.createElement("span");
+
+        //             // <i class="fas fa-code-branch"></i>
+        //             let forksText = document.createTextNode(`Forks : ${repo.forks}`);
+
+        //             starsSpan.appendChild(starsText);
+        //             forksSpan.appendChild(forksText);
+        //             mainDiv.appendChild(starsSpan);
+        //             mainDiv.appendChild(forksSpan);
+
+        //             mainDiv.className = 'repo-box';
+
+        //             reposData.appendChild(mainDiv);
+
+        //         });
+
+        //     });
+
+
+
+    }
+
+    getRepos();
+
+
+
+
+
+
 });
