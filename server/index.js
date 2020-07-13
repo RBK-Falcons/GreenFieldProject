@@ -9,11 +9,12 @@ connectDB();
 // init Midlleware
 app.use(express.json({ extended: false }));
 
-app.get('/api', (req, res) => res.send('API Running'));
+// app.get('/api', (req, res) => res.send('API Running'));
 
 // Define Routes
 app.use('/api/users', require('../routes/api/users'));
 app.use('/api/auth', require('../routes/api/auth'));
+app.use('/api/courses', require('../routes/api/courses'));
 
 const PORT = process.env.PORT || 5000;
 
