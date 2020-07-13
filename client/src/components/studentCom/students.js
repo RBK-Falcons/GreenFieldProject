@@ -72,7 +72,7 @@ class Student extends React.Component {
 
                 <div className="container">
 
-                    {/* Start First Feature Added Courses */}
+                    {/* Start First Feature View Courses */}
 
                     <div id="courses" className="feat text-center active">
                         <h4>Courses</h4>
@@ -129,14 +129,26 @@ class Student extends React.Component {
                         </div>
                     </div>
 
-                    {/* End First Feature Added Courses */}
+                    {/* End First Feature view Courses */}
 
                     <div id="questions" className="feat">
                         <h1>feature two</h1>
                     </div>
+
+                    {/* Start Github Repos Feature */}
                     <div id="students" className="feat">
-                        <h1>feature three</h1>
+
+                        <div className="repos-container">
+                            <div className="get-repos">
+                                <input type="text" value="dolphen05" hidden />
+                            </div>
+                            <div className="show-data">
+                            </div>
+                        </div>
+
                     </div>
+                    {/* End Github Repos Feature */}
+
                 </div>
 
                 {/* this div for clear float */}
