@@ -458,4 +458,53 @@ footer {
   visibility: visible;
 }
 
+/* Start Github Style */
+
+.repos-container {
+  width: 800px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.repos-container .show-data {
+  padding: 20px;
+  background-color: #ea907a;
+  border-radius: 8px;
+}
+
+.repos-container .show-data .repo-box {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+.repos-container .show-data .repo-box:not(:last-child) {
+  margin-bottom: 5px;
+}
+.repos-container .show-data .repo-box a,
+.repos-container .show-data .repo-box span {
+  float: right;
+  margin-left: 4px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 17px;
+  width: 90px;
+  text-align: center;
+  padding: 4px;
+  text-decoration: none;
+  background-color: #fbc687;
+  color: rgb(75, 71, 71);
+  border: 2px solid #f1d5b1;
+  transition: all 0.3s ease-in-out;
+  font-family: "Cabin", sans-serif;
+  font-weight: 800;
+}
+.repos-container .show-data .repo-box a:hover {
+  background-color: #aacdbe;
+  border: 2px solid #97a8a1;
+  box-shadow: 5px 5px 8px #aacdbe;
+  color: #000;
+}
+
+/* End Github Style */
+
 /* ========================== Start Student Style ========================== */
