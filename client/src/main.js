@@ -23,26 +23,26 @@ $(document).ready(function () {
 
   // Pop Up Videos In Student Page (Courses)
 
-  $('.video-popup').on('click', function (e) {
-    e.preventDefault();
-    var videoUrl = $(this).attr('data-media');
-    var popupIframe = $('#popup-frame');
+  // $('.video-popup').on('click', function (e) {
+  //   e.preventDefault();
+  //   var videoUrl = $(this).attr('data-media');
+  //   var popupIframe = $('#popup-frame');
 
-    popupIframe.attr('src', videoUrl);
-    $('.popup').addClass('show-popup');
-  });
+  //   popupIframe.attr('src', videoUrl);
+  //   $('.popup').addClass('show-popup');
+  // });
 
-  $('.popup').on('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
+  // $('.popup').on('click', function (e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
 
-    $('#popup-frame').attr('src', '');
-    $('.popup').removeClass('show-popup');
-  });
+  //   $('#popup-frame').attr('src', '');
+  //   $('.popup').removeClass('show-popup');
+  // });
 
-  $('.popup > iframe').on('click', function (e) {
-    e.stopPropagation();
-  });
+  // $('.popup > iframe').on('click', function (e) {
+  //   e.stopPropagation();
+  // });
 
   // Trigger MixitUp
   // $('.feat .course-videos .sections div').click(function () {

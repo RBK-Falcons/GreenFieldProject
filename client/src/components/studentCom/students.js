@@ -40,6 +40,29 @@ class Student extends React.Component {
       });
   }
 
+  showVideo(e) {
+    $('.video-popup').on('click', function (e) {
+      e.preventDefault();
+      var videoUrl = $(this).attr('data-media');
+      var popupIframe = $('#popup-frame');
+
+      popupIframe.attr('src', videoUrl);
+      $('.popup').addClass('show-popup');
+    });
+
+    $('.popup').on('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      $('#popup-frame').attr('src', '');
+      $('.popup').removeClass('show-popup');
+    });
+
+    $('.popup > iframe').on('click', function (e) {
+      e.stopPropagation();
+    });
+  }
+
   render() {
     return (
       <div className='students'>
@@ -130,11 +153,14 @@ class Student extends React.Component {
                     <table className='other'>
                       <tbody>
                         <tr>
-                          <td className='video'>
+                          <td
+                            className='video'
+                            onClick={this.showVideo.bind(this)}
+                          >
                             <a
                               className='video-popup'
                               href='#'
-                              data-media={video.videoUrl + ''}
+                              data-media={video.videoUrl}
                             >
                               <div className='play-icon-wrap'>
                                 <div className='play-icon'>
