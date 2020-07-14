@@ -7,15 +7,23 @@ import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import $ from 'jquery';
 import waterMellon from '../../main';
+// import { Redirect } from 'react-router-dom';
 
 class Student extends React.Component {
   state = {
     videos: [],
+    userName: '',
+    gitUser: '',
   };
 
   componentDidMount() {
-    // const { userName } = this.props.location.state;
-    // console.log(userName);
+    // console.log(this.props.location.state);
+    const { fName, gitUser } = this.props.location.state;
+    this.setState({
+      userName: fName,
+      gitUser,
+    });
+    console.log(fName, gitUser);
     waterMellon();
   }
 
@@ -85,7 +93,8 @@ class Student extends React.Component {
               <div className='table-row'>
                 <div className='intro text-center'>
                   <h1 className='upper'>
-                    Welcome <span className='main-color wl'>Ahmed</span>
+                    Welcome{' '}
+                    <span className='main-color wl'>{this.state.userName}</span>
                   </h1>
                 </div>
               </div>

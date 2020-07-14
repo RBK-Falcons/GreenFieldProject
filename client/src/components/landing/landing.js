@@ -5,8 +5,6 @@ class Landing extends React.Component {
   state = {};
 
   componentDidMount() {
-    // const { userName } = this.props.location.state;
-    // console.log(userName);
     waterMellon();
   }
 

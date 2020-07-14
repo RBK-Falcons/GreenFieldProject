@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
   state = {
     email: '',
     password: '',
-    user: { fName: '', email: '', password: '', gitUser: '', type: '' },
+    user: null,
     token: '',
   };
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -17,7 +18,6 @@ class Login extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    // console.log(this.props.history);
     const { email, password } = this.state;
     await axios
       .post('api/auth/loginUser', { email, password })
@@ -42,6 +42,7 @@ class Login extends React.Component {
       .then(response => {
         this.setState({
           user: response.data,
+          redirect: response.data.type,
         });
         console.log(this.state.user);
       })
@@ -51,6 +52,19 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.state.user) {
+      return (
+        <Redirect
+          to={{
+            pathname: `/${this.state.user.type}`,
+            state: {
+              fName: `${this.state.user.fName}`,
+              gitUser: `${this.state.user.gitUser}`,
+            },
+          }}
+        />
+      );
+    }
     return (
       <div className='auth-wrapper'>
         <div className='auth-inner'>
@@ -88,18 +102,8 @@ class Login extends React.Component {
               id='btn_login'
             >
               Login
-              {/* <Link
-                to={{
-                  pathname: `/ ${this.state.user.type}`,
-                  state: {
-                    fName: `/${this.state.user.fName}`,
-                    gitUser: `/${this.state.user.gitUser}`,
-                  },
-                }}
-              >
-                Login
-              </Link> */}
             </button>
+
             <p className='forgot-password text-right'>
               Don't have an account? <a href='../sign-up'>SignUp</a>
             </p>
