@@ -7,13 +7,16 @@ import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import $ from 'jquery';
 import waterMellon from '../../main';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 // import { Redirect } from 'react-router-dom';
 
 class Student extends React.Component {
   state = {
     videos: [],
     userName: '',
-    gitUser: '',
+    repos: [],
   };
 
   componentDidMount() {
@@ -21,9 +24,24 @@ class Student extends React.Component {
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
-      gitUser,
     });
-    console.log(fName, gitUser);
+    console.log(gitUser);
+    fetch(`https://api.github.com/users/${gitUser}/repos`)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Request failed.');
+      })
+      .then(data => {
+        this.setState({
+          repos: data,
+        });
+        console.log(this.state.repos);
+      })
+      .catch(error => {
+        console.log(error);
+      });
     waterMellon();
   }
 
@@ -204,13 +222,30 @@ class Student extends React.Component {
           </div>
           {/* Start Github Repos Feature */}
           <div id='students' className='feat'>
-            {/* <div className="repos-container">
-                            <div className="get-repos">
-                                <input type="text" value="hackreactor" hidden />
-                            </div>
-                            <div className="show-data">
-                            </div>
-                        </div> */}
+            <div className='repos-container'>
+              <div className='get-repos'>
+                <input type='text' value='hackreactor' hidden />
+              </div>
+              <div className='show-data'>
+                {this.state.repos.map((repo, index) => {
+                  return (
+                    <div className='repo-box' key={index}>
+                      {repo.name}
+                      <a href={repo.html_url} target='_blank'>
+                        <FontAwesomeIcon icon={faEye} />{' '}
+                      </a>
+                      <span>
+                        <FontAwesomeIcon icon={faStar} />{' '}
+                        {repo.stargazers_count}
+                      </span>
+                      <span>
+                        <FontAwesomeIcon icon={faCodeBranch} /> {repo.forks}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           {/* End Github Repos Feature */}
         </div>

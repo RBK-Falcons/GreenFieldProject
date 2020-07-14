@@ -44,7 +44,6 @@ class Login extends React.Component {
           user: response.data,
           redirect: response.data.type,
         });
-        console.log(this.state.user);
       })
       .catch(err => {
         console.error(err);

@@ -30,8 +30,8 @@ class Landing extends React.Component {
                     </span>
                   </h1>
                   <p className='capital'>
-                    It's an educational platform that connects the teachers with
-                    the students, <br />
+                    Educational platform that connects the teachers with the
+                    students, <br />
                     it provides an interface that provides the required academic
                     content in one place.
                   </p>
