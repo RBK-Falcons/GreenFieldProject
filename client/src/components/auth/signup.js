@@ -33,10 +33,10 @@ class Signup extends React.Component {
   }
 
   // this function to send data to serve to save it in database
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     const { fName, email, password, type, gitUser } = this.state;
-    axios
+    await axios
       .post('/api/users/createUser', {
         fName,
         email,
@@ -174,12 +174,15 @@ $(document).ready(function () {
   });
 
   $('span.list-group-item').click(function () {
-    $(this).css({
-      background: '#fbc687'
-    }).siblings().css({
-      background: '#fff'
-    })
-  })
+    $(this)
+      .css({
+        background: '#fbc687',
+      })
+      .siblings()
+      .css({
+        background: '#fff',
+      });
+  });
 });
 
 /* End jQuery Code */

@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+// import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
   state = {
     email: '',
     password: '',
+    user: { fName: '', email: '', password: '', gitUser: '', type: '' },
+    token: '',
   };
   handleChange(e) {
     this.setState({
@@ -12,13 +15,35 @@ class Login extends React.Component {
     });
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
+    // console.log(this.props.history);
     const { email, password } = this.state;
-    axios
+    await axios
       .post('api/auth/loginUser', { email, password })
       .then(response => {
-        console.log(response);
+        this.setState({
+          token: response.data.token,
+        });
+        this.getUser();
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  async getUser() {
+    const options = {
+      method: 'GET',
+      headers: { 'x-auth-token': this.state.token },
+      url: '/api/auth',
+    };
+    await axios(options)
+      .then(response => {
+        this.setState({
+          user: response.data,
+        });
+        console.log(this.state.user);
       })
       .catch(err => {
         console.error(err);
@@ -57,8 +82,23 @@ class Login extends React.Component {
               />
             </div>
 
-            <button type='submit' className='btn btn-primary btn-block'>
+            <button
+              type='submit'
+              className='btn btn-primary btn-block'
+              id='btn_login'
+            >
               Login
+              {/* <Link
+                to={{
+                  pathname: `/ ${this.state.user.type}`,
+                  state: {
+                    fName: `/${this.state.user.fName}`,
+                    gitUser: `/${this.state.user.gitUser}`,
+                  },
+                }}
+              >
+                Login
+              </Link> */}
             </button>
             <p className='forgot-password text-right'>
               Don't have an account? <a href='../sign-up'>SignUp</a>

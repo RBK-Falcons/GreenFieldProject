@@ -6,14 +6,21 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import $ from 'jquery';
+import waterMellon from '../../main';
 
 class Student extends React.Component {
   state = {
     videos: [],
   };
 
-  getAllVideos() {
-    axios
+  componentDidMount() {
+    // const { userName } = this.props.location.state;
+    // console.log(userName);
+    waterMellon();
+  }
+
+  async getAllVideos() {
+    await axios
       .get('/api/courses')
       .then(response => {
         this.setState({
@@ -25,9 +32,9 @@ class Student extends React.Component {
       });
   }
 
-  getCustomVideos(e) {
+  async getCustomVideos(e) {
     var type = $(e.target)[0].dataset.filter.slice(1);
-    axios
+    await axios
       .get(`/api/courses/${type}`)
       .then(response => {
         this.setState({
@@ -41,8 +48,8 @@ class Student extends React.Component {
   }
 
   showVideo(e) {
+    e.preventDefault();
     $('.video-popup').on('click', function (e) {
-      e.preventDefault();
       var videoUrl = $(this).attr('data-media');
       var popupIframe = $('#popup-frame');
 
@@ -148,9 +155,9 @@ class Student extends React.Component {
               </div>
               {/* End Section Courses */}
               <section>
-                {this.state.videos.map(video => {
+                {this.state.videos.map((video, index) => {
                   return (
-                    <table className='other'>
+                    <table className='other' key={index}>
                       <tbody>
                         <tr>
                           <td
