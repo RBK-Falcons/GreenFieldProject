@@ -6,14 +6,47 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import $ from 'jquery';
+import waterMellon from '../../main';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+// import { Redirect } from 'react-router-dom';
 
 class Student extends React.Component {
   state = {
     videos: [],
+    userName: '',
+    repos: [],
   };
 
-  getAllVideos() {
-    axios
+  componentDidMount() {
+    // console.log(this.props.location.state);
+    const { fName, gitUser } = this.props.location.state;
+    this.setState({
+      userName: fName,
+    });
+    console.log(gitUser);
+    fetch(`https://api.github.com/users/${gitUser}/repos`)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Request failed.');
+      })
+      .then(data => {
+        this.setState({
+          repos: data,
+        });
+        console.log(this.state.repos);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    waterMellon();
+  }
+
+  async getAllVideos() {
+    await axios
       .get('/api/courses')
       .then(response => {
         this.setState({
@@ -25,9 +58,9 @@ class Student extends React.Component {
       });
   }
 
-  getCustomVideos(e) {
+  async getCustomVideos(e) {
     var type = $(e.target)[0].dataset.filter.slice(1);
-    axios
+    await axios
       .get(`/api/courses/${type}`)
       .then(response => {
         this.setState({
@@ -41,8 +74,8 @@ class Student extends React.Component {
   }
 
   showVideo(e) {
+    e.preventDefault();
     $('.video-popup').on('click', function (e) {
-      e.preventDefault();
       var videoUrl = $(this).attr('data-media');
       var popupIframe = $('#popup-frame');
 
@@ -78,7 +111,8 @@ class Student extends React.Component {
               <div className='table-row'>
                 <div className='intro text-center'>
                   <h1 className='upper'>
-                    Welcome <span className='main-color wl'>Ahmed</span>
+                    Welcome{' '}
+                    <span className='main-color wl'>{this.state.userName}</span>
                   </h1>
                 </div>
               </div>
@@ -148,9 +182,9 @@ class Student extends React.Component {
               </div>
               {/* End Section Courses */}
               <section>
-                {this.state.videos.map(video => {
+                {this.state.videos.map((video, index) => {
                   return (
-                    <table className='other'>
+                    <table className='other' key={index}>
                       <tbody>
                         <tr>
                           <td
@@ -188,13 +222,30 @@ class Student extends React.Component {
           </div>
           {/* Start Github Repos Feature */}
           <div id='students' className='feat'>
-            {/* <div className="repos-container">
-                            <div className="get-repos">
-                                <input type="text" value="hackreactor" hidden />
-                            </div>
-                            <div className="show-data">
-                            </div>
-                        </div> */}
+            <div className='repos-container'>
+              <div className='get-repos'>
+                <input type='text' value='hackreactor' hidden />
+              </div>
+              <div className='show-data'>
+                {this.state.repos.map((repo, index) => {
+                  return (
+                    <div className='repo-box' key={index}>
+                      {repo.name}
+                      <a href={repo.html_url} target='_blank'>
+                        <FontAwesomeIcon icon={faEye} />{' '}
+                      </a>
+                      <span>
+                        <FontAwesomeIcon icon={faStar} />{' '}
+                        {repo.stargazers_count}
+                      </span>
+                      <span>
+                        <FontAwesomeIcon icon={faCodeBranch} /> {repo.forks}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           {/* End Github Repos Feature */}
         </div>

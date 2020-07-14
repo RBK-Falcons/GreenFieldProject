@@ -1,7 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
-import { faSpellCheck } from '@fortawesome/free-solid-svg-icons';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUniversity } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +7,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-// import $ from 'jquery';
+import waterMellon from '../../main';
 
 class Teacher extends React.Component {
   state = {
@@ -17,7 +15,18 @@ class Teacher extends React.Component {
     type: '',
     videoUrl: '',
     description: '',
+    userName: '',
+    gitUser: '',
   };
+
+  componentDidMount() {
+    const { fName, gitUser } = this.props.location.state;
+    this.setState({
+      userName: fName,
+      gitUser,
+    });
+    waterMellon();
+  }
 
   // this function to handle Data From add videos Form
   handleChange(e) {
@@ -27,11 +36,11 @@ class Teacher extends React.Component {
   }
 
   // this function to send data to serve to save it in database
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     const { title, type, videoUrl, description } = this.state;
     ///// post an video
-    axios
+    await axios
       .post('/api/courses/addCourse', {
         title,
         type,
@@ -62,7 +71,8 @@ class Teacher extends React.Component {
               <div className='table-row'>
                 <div className='intro text-center'>
                   <h1 className='upper'>
-                    Welcome <span className='main-color wl'>Ibrahim</span>
+                    Welcome{' '}
+                    <span className='main-color wl'>{this.state.userName}</span>
                   </h1>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 /* Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Lato&family=Lobster&family=Roboto&family=Source+Sans+Pro&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Lato&family=Lobster&family=Roboto&family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&display=swap');
 
 /* ========================== Start Teacher Style ========================== */
 
@@ -83,7 +83,7 @@
   width: 100%;
   font-size: 40px;
   font-weight: 800;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
 }
 
 .header .navbar .links {
@@ -94,7 +94,7 @@
 }
 .header .intro {
   margin-top: 10%;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
 }
 .header .intro .wl {
   padding: 20px 0;
@@ -102,7 +102,7 @@
   text-transform: capitalize;
   font-size: 50px;
   font-weight: 800;
-  font-family: "Fondamento", cursive;
+  font-family: 'Fondamento', cursive;
 }
 .header .intro .wl span {
   color: #fff !important;
@@ -200,12 +200,12 @@
   text-transform: uppercase;
   font-weight: bolder;
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .features .box p {
   color: #fff;
   line-height: 1.9;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
 }
 /* This for videos adding */
 
@@ -214,7 +214,7 @@
 }
 .feat h4 {
   color: #e07b62;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-weight: 800;
 }
 .feat .h1 {
@@ -234,7 +234,7 @@
   margin-bottom: 40px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-size: 22px;
   /* box-shadow: 5px 5px 10px #fbc687; */
   border-radius: 10px;
@@ -297,7 +297,7 @@
   margin: auto;
   color: rgb(75, 71, 71);
   font-weight: 800;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-size: 22px;
 }
 
@@ -310,7 +310,7 @@ footer {
   background-color: #c5c5c5;
   font-size: 16px;
   font-weight: 700;
-  font-family: "arial", sans-serif;
+  font-family: 'arial', sans-serif;
 }
 
 /* End Footer */
@@ -330,7 +330,7 @@ footer {
   margin-bottom: 40px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-size: 22px;
   /* box-shadow: 5px 5px 10px #fbc687; */
   border-radius: 10px;
@@ -393,7 +393,7 @@ footer {
   margin: auto;
   color: rgb(75, 71, 71);
   font-weight: 800;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-size: 22px;
 }
 .feat .course-videos section table {
@@ -500,7 +500,7 @@ footer {
   color: rgb(75, 71, 71);
   border: 2px solid #f1d5b1;
   transition: all 0.3s ease-in-out;
-  font-family: "Cabin", sans-serif;
+  font-family: 'Cabin', sans-serif;
   font-weight: 800;
 }
 .repos-container .show-data .repo-box a:hover {

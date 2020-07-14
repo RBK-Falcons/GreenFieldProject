@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Signup extends React.Component {
   state = {
@@ -9,6 +10,7 @@ class Signup extends React.Component {
     password: '',
     type: '',
     gitUser: '',
+    success: false,
   };
 
   // This function for handle changing from inputs
@@ -33,10 +35,10 @@ class Signup extends React.Component {
   }
 
   // this function to send data to serve to save it in database
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     const { fName, email, password, type, gitUser } = this.state;
-    axios
+    await axios
       .post('/api/users/createUser', {
         fName,
         email,
@@ -46,6 +48,9 @@ class Signup extends React.Component {
       })
       .then(res => {
         console.log(res.data);
+        this.setState({
+          success: true,
+        });
       })
       .catch(err => {
         console.log(err);
@@ -53,6 +58,9 @@ class Signup extends React.Component {
   }
 
   render() {
+    if (this.state.success) {
+      return <Redirect to='/sign-in' />;
+    }
     return (
       <div className='auth-wrapper'>
         <div className='auth-inner'>
@@ -174,12 +182,15 @@ $(document).ready(function () {
   });
 
   $('span.list-group-item').click(function () {
-    $(this).css({
-      background: '#fbc687'
-    }).siblings().css({
-      background: '#fff'
-    })
-  })
+    $(this)
+      .css({
+        background: '#fbc687',
+      })
+      .siblings()
+      .css({
+        background: '#fff',
+      });
+  });
 });
 
 /* End jQuery Code */

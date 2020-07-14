@@ -1,24 +1,49 @@
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
   state = {
     email: '',
     password: '',
+    user: null,
+    token: '',
   };
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     const { email, password } = this.state;
-    axios
+    await axios
       .post('api/auth/loginUser', { email, password })
       .then(response => {
-        console.log(response);
+        this.setState({
+          token: response.data.token,
+        });
+        this.getUser();
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+
+  async getUser() {
+    const options = {
+      method: 'GET',
+      headers: { 'x-auth-token': this.state.token },
+      url: '/api/auth',
+    };
+    await axios(options)
+      .then(response => {
+        this.setState({
+          user: response.data,
+          redirect: response.data.type,
+        });
       })
       .catch(err => {
         console.error(err);
@@ -26,6 +51,19 @@ class Login extends React.Component {
   }
 
   render() {
+    if (this.state.user) {
+      return (
+        <Redirect
+          to={{
+            pathname: `/${this.state.user.type}`,
+            state: {
+              fName: `${this.state.user.fName}`,
+              gitUser: `${this.state.user.gitUser}`,
+            },
+          }}
+        />
+      );
+    }
     return (
       <div className='auth-wrapper'>
         <div className='auth-inner'>
@@ -57,9 +95,14 @@ class Login extends React.Component {
               />
             </div>
 
-            <button type='submit' className='btn btn-primary btn-block'>
+            <button
+              type='submit'
+              className='btn btn-primary btn-block'
+              id='btn_login'
+            >
               Login
             </button>
+
             <p className='forgot-password text-right'>
               Don't have an account? <a href='../sign-up'>SignUp</a>
             </p>
