@@ -24,14 +24,32 @@ class Teacher extends React.Component {
     description: '',
     userName: '',
     gitUser: '',
+    allStudents: [],
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    localStorage.removeItem('token');
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
       gitUser,
     });
+    // try {
+    //   let users = await axios.get('/api/users');
+    //   console.log('---->', users.data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    await axios
+      .get('/api/users')
+      .then(res => {
+        this.setState({
+          allStudents: res.data,
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
     waterMellon();
   }
 
@@ -207,55 +225,59 @@ class Teacher extends React.Component {
           {/*we need map on the students*/}
           <div id='students' className='feat'>
             <div className='students-container'>
-              <div className='show-students'>
-                <div className='student-info-front'>
-                  <div className='img-std'>
-                    <img src={img} width='150' alt='...' />
+              {this.state.allStudents.map((student, ind) => {
+                return (
+                  <div className='show-students' key={ind}>
+                    <div className='student-info-front'>
+                      <div className='img-std'>
+                        <img src={img} width='150' alt='...' />
+                      </div>
+                      <div className='info-std'>
+                        <h4>{student.fName}</h4>
+                        <p>
+                          <span>email :</span> {student.email}
+                        </p>
+                        <p>
+                          <span>Major :</span> {student.type}
+                        </p>
+                        <p>
+                          <span>Github :</span> {student.gitUser}
+                        </p>
+                      </div>
+                    </div>
+                    <div className='student-info-back'>
+                      <ul>
+                        <li>
+                          <a href={student.gitHubLink} target='_blank'>
+                            <FontAwesomeIcon icon={faGithubSquare} />
+                          </a>
+                        </li>
+                        <li>
+                          <a href='https://codepen.io/dolphen' target='_blank'>
+                            <FontAwesomeIcon icon={faCodepen} />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href='https://www.linkedin.com/in/ahmed-abuwaked-80035618b/'
+                            target='_blank'
+                          >
+                            <FontAwesomeIcon icon={faLinkedin} />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href='https://twitter.com/AhmedAbuwaked'
+                            target='_blank'
+                          >
+                            <FontAwesomeIcon icon={faTwitterSquare} />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div className='info-std'>
-                    <h4>Ahmed Waked</h4>
-                    <p>
-                      <span>email :</span> ahmed@gmail.com
-                    </p>
-                    <p>
-                      <span>Major :</span> Student
-                    </p>
-                    <p>
-                      <span>Github :</span> dolphen05
-                    </p>
-                  </div>
-                </div>
-                <div className='student-info-back'>
-                  <ul>
-                    <li>
-                      <a href='https://github.com/dolphen05' target='_blank'>
-                        <FontAwesomeIcon icon={faGithubSquare} />
-                      </a>
-                    </li>
-                    <li>
-                      <a href='https://codepen.io/dolphen' target='_blank'>
-                        <FontAwesomeIcon icon={faCodepen} />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href='https://www.linkedin.com/in/ahmed-abuwaked-80035618b/'
-                        target='_blank'
-                      >
-                        <FontAwesomeIcon icon={faLinkedin} />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href='https://twitter.com/AhmedAbuwaked'
-                        target='_blank'
-                      >
-                        <FontAwesomeIcon icon={faTwitterSquare} />
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
         </div>
