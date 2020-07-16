@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm } from '@fortawesome/free-solid-svg-icons';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import axios from 'axios';
 import $ from 'jquery';
@@ -20,7 +21,6 @@ class Student extends React.Component {
   };
 
   componentDidMount() {
-    localStorage.removeItem('token');
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
@@ -106,6 +106,10 @@ class Student extends React.Component {
               <div className='navbar'>
                 <span>
                   <span className='main-color wl'>Edu</span>Me
+                </span>
+                <span class="links">
+                  Logout
+                  <FontAwesomeIcon icon={faSignOutAlt} />
                 </span>
               </div>
               <div className='table-row'>
