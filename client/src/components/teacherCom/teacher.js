@@ -185,8 +185,12 @@ class Teacher extends React.Component {
                   <FontAwesomeIcon icon={faEdit} /> Edit Video
                 </div>
               </div>
+
+              {/* Start Dashboard Section */}
               <section>
                 <div id='add'>
+
+                  {/* Start Add Video Section */}
                   <form onSubmit={this.handleSubmit.bind(this)}>
                     <div className='form-group'>
                       <label>Enter Video Title</label>
@@ -202,7 +206,7 @@ class Teacher extends React.Component {
 
                     <div className='choice'>
                       <div className='choice-head'>
-                        <label>Options</label>
+                        <label>Video Type</label>
                       </div>
                       <select
                         onChange={this.setTypeVal.bind(this)}
@@ -243,19 +247,91 @@ class Teacher extends React.Component {
                       Add Video
                     </button>
                   </form>
+
+                  {/* End Add Video Section */}
+
                 </div>
                 <div id='view'>
+
+                  {/* Start View Video Section */}
                   <h2>view Video</h2>
+                  {/* End View Video Section */}
+
                 </div>
                 <div id='edit'>
-                  <h2>edit Video</h2>
+                  {/* Start Edit Video Section */}
+
+                  <form onSubmit={this.handleSubmit.bind(this)}>
+                    <div className='choice'>
+                      <div className='choice-head'>
+                        <label>Video Title</label>
+                      </div>
+                      <select
+                        onChange={this.setTypeVal.bind(this)}
+                        className='custom-select'
+                      >
+                        <option value>Choose...</option>
+                      </select>
+                    </div>
+
+                    <div className='choice'>
+                      <div className='choice-head'>
+                        <label>Video Type</label>
+                      </div>
+                      <select
+                        onChange={this.setTypeVal.bind(this)}
+                        className='custom-select'
+                      >
+                        <option value>Choose...</option>
+                        <option value='technical-skills'>
+                          Technical Skills
+                        </option>
+                        <option value='non-technical'>Non Technical</option>
+                        <option value='other'>Other</option>
+                      </select>
+                    </div>
+
+                    <div className='form-group'>
+                      <label>Enter Video URL</label>
+                      <input
+                        type='text'
+                        name='videoUrl'
+                        className='form-control'
+                        placeholder='Enter Video URL'
+                        value={this.state.videoUrl}
+                        onChange={this.handleChange.bind(this)}
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <label>Enter Video Description</label>
+                      <textarea
+                        name='description'
+                        placeholder='Enter Video Description'
+                        className='form-control'
+                        value={this.state.description}
+                        onChange={this.handleChange.bind(this)}
+                      ></textarea>
+                    </div>
+                    <button type='submit' className='btn btn-primary'>
+                      Edit Video
+                    </button>
+                  </form>
+
+
+                  {/* End Edit Video Section */}
                 </div>
               </section>
+              {/* End Dashboard Section */}
+
             </div>
           </div>
+
+          {/* Start Add Question Section */}
           <div id='questions' className='feat'>
             <h1>feature two</h1>
           </div>
+          {/* End Add Question Section */}
+
           {/*we need map on the students*/}
           <div id='students' className='feat'>
             <div className='students-container'>
@@ -266,7 +342,7 @@ class Teacher extends React.Component {
                       <div className='img-std'>
                         <img
                           src='https://bit.ly/3eBREZQ'
-                          width='150'
+                          width="150"
                           alt='...'
                         />
                       </div>
