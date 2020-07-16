@@ -21,7 +21,6 @@ const waterMellon = () => {
       console.log(section);
     });
 
-
     // Trigger MixitUp
     // $('.feat .course-videos .sections div').click(function () {
     //     var type = $(this).data('filter')
@@ -42,14 +41,6 @@ const waterMellon = () => {
     //         effectsOut: 'fade translateX(-100%)'
     //     }
     // })
-
-
-
-    $('.header .overlay .navbar .links').click(function () {
-      localStorage.removeItem('token');
-    })
-
-
   });
 };
 

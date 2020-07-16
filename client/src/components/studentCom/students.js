@@ -45,6 +45,11 @@ class Student extends React.Component {
     waterMellon();
   }
 
+  logOut() {
+    localStorage.removeItem('token');
+    this.props.history.push('/sign-in');
+  }
+
   async getAllVideos() {
     await axios
       .get('/api/courses')
@@ -107,7 +112,7 @@ class Student extends React.Component {
                 <span>
                   <span className='main-color wl'>Edu</span>Me
                 </span>
-                <span class="links">
+                <span class='links' onClick={this.logOut.bind(this)}>
                   Logout
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </span>

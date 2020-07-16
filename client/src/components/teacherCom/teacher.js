@@ -97,6 +97,11 @@ class Teacher extends React.Component {
       });
   }
 
+  logOut() {
+    localStorage.removeItem('token');
+    this.props.history.push('/sign-in');
+  }
+
   render() {
     return (
       <div className='teacher'>
@@ -109,7 +114,7 @@ class Teacher extends React.Component {
                 <span>
                   <span className='main-color wl'>Edu</span>Me
                 </span>
-                <span className='links'>
+                <span className='links' onClick={this.logOut.bind(this)}>
                   Logout
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </span>
