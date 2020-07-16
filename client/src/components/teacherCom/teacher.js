@@ -61,22 +61,15 @@ class Teacher extends React.Component {
     });
   }
 
-
   setTypeVal() {
-
-    // $('.custom-select').change(function () {
-    //   this.setState({
-    //     type: $('.custom-select').val()
-    //   })
-    // });
-    console.log($('.custom-select')[0].value)
-
+    this.setState({
+      type: $('.custom-select').val(),
+    });
   }
 
   // this function to send data to serve to save it in database
   async handleSubmit(e) {
     e.preventDefault();
-
 
     const { title, type, videoUrl, description } = this.state;
     ///// post an video
@@ -89,6 +82,15 @@ class Teacher extends React.Component {
       })
       .then(res => {
         console.log(res.data);
+        this.setState({
+          title: '',
+          type: '',
+          videoUrl: '',
+          description: '',
+          userName: '',
+          gitUser: '',
+          allStudents: [],
+        });
       })
       .catch(err => {
         console.log(err);
@@ -107,7 +109,7 @@ class Teacher extends React.Component {
                 <span>
                   <span className='main-color wl'>Edu</span>Me
                 </span>
-                <span class="links">
+                <span className='links'>
                   Logout
                   <FontAwesomeIcon icon={faSignOutAlt} />
                 </span>
@@ -193,15 +195,21 @@ class Teacher extends React.Component {
                       />
                     </div>
 
-                    <div className="choice">
-                      <div className="choice-head">
+                    <div className='choice'>
+                      <div className='choice-head'>
                         <label>Options</label>
                       </div>
-                      <select onChange={this.setTypeVal.bind(this)} className="custom-select" name="type">
-                        <option selected>Choose...</option>
-                        <option value="technical-skills">Technical Skills</option>
-                        <option value="non-technical">Non Technical</option>
-                        <option value="other">Other</option>
+                      <select
+                        onChange={this.setTypeVal.bind(this)}
+                        className='custom-select'
+                        name='type'
+                      >
+                        <option value>Choose...</option>
+                        <option value='technical-skills'>
+                          Technical Skills
+                        </option>
+                        <option value='non-technical'>Non Technical</option>
+                        <option value='other'>Other</option>
                       </select>
                     </div>
 
