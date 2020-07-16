@@ -668,3 +668,28 @@ footer {
 }
 
 /*** End LogOut Button ***/
+
+.choice {
+  padding-left: 55px;
+  margin-bottom: 13px;
+}
+.choice .choice-head {
+  display: inline;
+}
+.choice .choice-head label {
+  padding-left: 7px !important;
+  border: 1px solid #ddd;
+  padding: 10px 10px 8px 7px;
+  border-radius: 5px 0px 0px 5px;
+}
+.choice .custom-select {
+  height: 40px;
+  width: 75%;
+  border: 1px solid #ddd;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #ddd;
+  padding: 9px;
+}
+.choice .custom-select:focus {
+  border: 1px solid #fbc687;
+}

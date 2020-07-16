@@ -9,6 +9,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import waterMellon from '../../main';
+import $ from 'jquery';
 
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faCodepen } from '@fortawesome/free-brands-svg-icons';
@@ -60,9 +61,23 @@ class Teacher extends React.Component {
     });
   }
 
+
+  setTypeVal() {
+
+    // $('.custom-select').change(function () {
+    //   this.setState({
+    //     type: $('.custom-select').val()
+    //   })
+    // });
+    console.log($('.custom-select')[0].value)
+
+  }
+
   // this function to send data to serve to save it in database
   async handleSubmit(e) {
     e.preventDefault();
+
+
     const { title, type, videoUrl, description } = this.state;
     ///// post an video
     await axios
@@ -177,17 +192,19 @@ class Teacher extends React.Component {
                         onChange={this.handleChange.bind(this)}
                       />
                     </div>
-                    <div className='form-group'>
-                      <label>Enter Video Type</label>
-                      <input
-                        type='text'
-                        name='type'
-                        className='form-control'
-                        placeholder='Enter Video Type'
-                        value={this.state.type}
-                        onChange={this.handleChange.bind(this)}
-                      />
+
+                    <div className="choice">
+                      <div className="choice-head">
+                        <label>Options</label>
+                      </div>
+                      <select onChange={this.setTypeVal.bind(this)} className="custom-select" name="type">
+                        <option selected>Choose...</option>
+                        <option value="technical-skills">Technical Skills</option>
+                        <option value="non-technical">Non Technical</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
+
                     <div className='form-group'>
                       <label>Enter Video URL</label>
                       <input
