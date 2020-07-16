@@ -264,7 +264,11 @@ class Teacher extends React.Component {
                   <div className='show-students' key={ind}>
                     <div className='student-info-front'>
                       <div className='img-std'>
-                        <img src={img} width='150' alt='...' />
+                        <img
+                          src='https://bit.ly/3eBREZQ'
+                          width='150'
+                          alt='...'
+                        />
                       </div>
                       <div className='info-std'>
                         <h4>{student.fName}</h4>
