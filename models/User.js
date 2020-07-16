@@ -6,8 +6,7 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   type: { type: String, required: true },
   gitUser: { type: String },
+  gitHubLink: { type: String },
 });
-// Is gitUser required
-// avatar: { type: String },
 
 module.exports = mongoose.model('Users', UserSchema);

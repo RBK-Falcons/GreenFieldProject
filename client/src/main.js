@@ -21,28 +21,6 @@ const waterMellon = () => {
       console.log(section);
     });
 
-    // Pop Up Videos In Student Page (Courses)
-
-    // $('.video-popup').on('click', function (e) {
-    //   e.preventDefault();
-    //   var videoUrl = $(this).attr('data-media');
-    //   var popupIframe = $('#popup-frame');
-
-    //   popupIframe.attr('src', videoUrl);
-    //   $('.popup').addClass('show-popup');
-    // });
-
-    // $('.popup').on('click', function (e) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-
-    //   $('#popup-frame').attr('src', '');
-    //   $('.popup').removeClass('show-popup');
-    // });
-
-    // $('.popup > iframe').on('click', function (e) {
-    //   e.stopPropagation();
-    // });
 
     // Trigger MixitUp
     // $('.feat .course-videos .sections div').click(function () {
@@ -65,41 +43,13 @@ const waterMellon = () => {
     //     }
     // })
 
-    // Starting Work With GitHub API (For lating)
 
-    //   let theInput = document.querySelector('.repos-container .get-repos input');
-    //   let reposData = document.querySelector('.repos-container .show-data');
 
-    // this function for get repos
-    //   function getRepos() {
-    // fetch(`https://api.github.com/users/${theInput.value}/repos`)
-    //     .then((response) => response.json())
-    //     .then((repos) => {
-    //         repos.forEach(repo => {
-    //             let mainDiv = document.createElement("div");
-    //             let repoName = document.createTextNode(repo.name);
-    //             mainDiv.appendChild(repoName);
-    //             let theUrl = document.createElement('a');
-    //             let theUrlText = document.createTextNode("Visit");
-    //             theUrl.appendChild(theUrlText);
-    //             theUrl.href = `https://github.com/${theInput.value}/${repo.name}`;
-    //             theUrl.setAttribute('target', '_blank');
-    //             mainDiv.appendChild(theUrl);
-    //             let starsSpan = document.createElement("span");
-    //             let starsText = document.createTextNode(`Stars : ${repo.stargazers_count}`);
-    //             let forksSpan = document.createElement("span");
-    //             // <i class="fas fa-code-branch"></i>
-    //             let forksText = document.createTextNode(`Forks : ${repo.forks}`);
-    //             starsSpan.appendChild(starsText);
-    //             forksSpan.appendChild(forksText);
-    //             mainDiv.appendChild(starsSpan);
-    //             mainDiv.appendChild(forksSpan);
-    //             mainDiv.className = 'repo-box';
-    //             reposData.appendChild(mainDiv);
-    //         });
-    //     });
-    //   }
-    //   getRepos();
+    $('.header .overlay .navbar .links').click(function () {
+      localStorage.removeItem('token');
+    })
+
+
   });
 };
 
