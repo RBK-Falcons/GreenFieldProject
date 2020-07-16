@@ -11,7 +11,6 @@ class Login extends React.Component {
   };
 
   componentDidMount() {
-    // localStorage.removeItem('token');
     var tok = localStorage.getItem('token');
     console.log(tok);
     if (tok) {
@@ -49,7 +48,6 @@ class Login extends React.Component {
       headers: { 'x-auth-token': this.state.token || tok },
       url: '/api/auth',
     };
-    console.log('---->', this.state.token);
     await axios(options)
       .then(response => {
         this.setState({
