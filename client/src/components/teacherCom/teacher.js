@@ -6,6 +6,7 @@ import { faUniversity } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import waterMellon from '../../main';
 
@@ -28,7 +29,6 @@ class Teacher extends React.Component {
   };
 
   async componentDidMount() {
-    localStorage.removeItem('token');
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
@@ -91,6 +91,10 @@ class Teacher extends React.Component {
               <div className='navbar'>
                 <span>
                   <span className='main-color wl'>Edu</span>Me
+                </span>
+                <span class="links">
+                  Logout
+                  <FontAwesomeIcon icon={faSignOutAlt} />
                 </span>
               </div>
               <div className='table-row'>
