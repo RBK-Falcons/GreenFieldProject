@@ -291,23 +291,17 @@ class Teacher extends React.Component {
                           </a>
                         </li>
                         <li>
-                          <a href='https://codepen.io/dolphen' target='_blank'>
+                          <a href='https://codepen.io/' target='_blank'>
                             <FontAwesomeIcon icon={faCodepen} />
                           </a>
                         </li>
                         <li>
-                          <a
-                            href='https://www.linkedin.com/in/ahmed-abuwaked-80035618b/'
-                            target='_blank'
-                          >
+                          <a href='https://www.linkedin.com/' target='_blank'>
                             <FontAwesomeIcon icon={faLinkedin} />
                           </a>
                         </li>
                         <li>
-                          <a
-                            href='https://twitter.com/AhmedAbuwaked'
-                            target='_blank'
-                          >
+                          <a href='https://twitter.com/' target='_blank'>
                             <FontAwesomeIcon icon={faTwitterSquare} />
                           </a>
                         </li>
