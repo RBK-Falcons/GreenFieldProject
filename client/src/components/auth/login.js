@@ -10,6 +10,16 @@ class Login extends React.Component {
     token: '',
   };
 
+  componentDidMount() {
+    // localStorage.removeItem('token');
+    var tok = localStorage.getItem('token');
+    console.log(tok);
+    if (tok) {
+      console.log('token is empty');
+      this.getUser(tok);
+    }
+  }
+
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
@@ -25,6 +35,7 @@ class Login extends React.Component {
         this.setState({
           token: response.data.token,
         });
+        localStorage.setItem('token', response.data.token);
         this.getUser();
       })
       .catch(err => {
@@ -32,12 +43,13 @@ class Login extends React.Component {
       });
   }
 
-  async getUser() {
+  async getUser(tok) {
     const options = {
       method: 'GET',
-      headers: { 'x-auth-token': this.state.token },
+      headers: { 'x-auth-token': this.state.token || tok },
       url: '/api/auth',
     };
+    console.log('---->', this.state.token);
     await axios(options)
       .then(response => {
         this.setState({

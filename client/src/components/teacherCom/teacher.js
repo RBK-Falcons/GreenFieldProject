@@ -9,6 +9,13 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import waterMellon from '../../main';
 
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { faCodepen } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+
+import img from '../../img/avatar_profile.jpg';
+
 class Teacher extends React.Component {
   state = {
     title: '',
@@ -197,8 +204,59 @@ class Teacher extends React.Component {
           <div id='questions' className='feat'>
             <h1>feature two</h1>
           </div>
+          {/*we need map on the students*/}
           <div id='students' className='feat'>
-            <h1>feature three</h1>
+            <div className='students-container'>
+              <div className='show-students'>
+                <div className='student-info-front'>
+                  <div className='img-std'>
+                    <img src={img} width='150' alt='...' />
+                  </div>
+                  <div className='info-std'>
+                    <h4>Ahmed Waked</h4>
+                    <p>
+                      <span>email :</span> ahmed@gmail.com
+                    </p>
+                    <p>
+                      <span>Major :</span> Student
+                    </p>
+                    <p>
+                      <span>Github :</span> dolphen05
+                    </p>
+                  </div>
+                </div>
+                <div className='student-info-back'>
+                  <ul>
+                    <li>
+                      <a href='https://github.com/dolphen05' target='_blank'>
+                        <FontAwesomeIcon icon={faGithubSquare} />
+                      </a>
+                    </li>
+                    <li>
+                      <a href='https://codepen.io/dolphen' target='_blank'>
+                        <FontAwesomeIcon icon={faCodepen} />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href='https://www.linkedin.com/in/ahmed-abuwaked-80035618b/'
+                        target='_blank'
+                      >
+                        <FontAwesomeIcon icon={faLinkedin} />
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href='https://twitter.com/AhmedAbuwaked'
+                        target='_blank'
+                      >
+                        <FontAwesomeIcon icon={faTwitterSquare} />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
