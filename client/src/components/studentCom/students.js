@@ -20,7 +20,7 @@ class Student extends React.Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.location.state);
+    localStorage.removeItem('token');
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,

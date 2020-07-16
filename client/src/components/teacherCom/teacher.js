@@ -9,6 +9,13 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import waterMellon from '../../main';
 
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
+import { faCodepen } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+
+import img from '../../img/avatar_profile.jpg';
+
 class Teacher extends React.Component {
   state = {
     title: '',
@@ -17,14 +24,32 @@ class Teacher extends React.Component {
     description: '',
     userName: '',
     gitUser: '',
+    allStudents: [],
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    localStorage.removeItem('token');
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
       gitUser,
     });
+    // try {
+    //   let users = await axios.get('/api/users');
+    //   console.log('---->', users.data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    await axios
+      .get('/api/users')
+      .then(res => {
+        this.setState({
+          allStudents: res.data,
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
     waterMellon();
   }
 
@@ -197,8 +222,63 @@ class Teacher extends React.Component {
           <div id='questions' className='feat'>
             <h1>feature two</h1>
           </div>
+          {/*we need map on the students*/}
           <div id='students' className='feat'>
-            <h1>feature three</h1>
+            <div className='students-container'>
+              {this.state.allStudents.map((student, ind) => {
+                return (
+                  <div className='show-students' key={ind}>
+                    <div className='student-info-front'>
+                      <div className='img-std'>
+                        <img src={img} width='150' alt='...' />
+                      </div>
+                      <div className='info-std'>
+                        <h4>{student.fName}</h4>
+                        <p>
+                          <span>email :</span> {student.email}
+                        </p>
+                        <p>
+                          <span>Major :</span> {student.type}
+                        </p>
+                        <p>
+                          <span>Github :</span> {student.gitUser}
+                        </p>
+                      </div>
+                    </div>
+                    <div className='student-info-back'>
+                      <ul>
+                        <li>
+                          <a href={student.gitHubLink} target='_blank'>
+                            <FontAwesomeIcon icon={faGithubSquare} />
+                          </a>
+                        </li>
+                        <li>
+                          <a href='https://codepen.io/dolphen' target='_blank'>
+                            <FontAwesomeIcon icon={faCodepen} />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href='https://www.linkedin.com/in/ahmed-abuwaked-80035618b/'
+                            target='_blank'
+                          >
+                            <FontAwesomeIcon icon={faLinkedin} />
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href='https://twitter.com/AhmedAbuwaked'
+                            target='_blank'
+                          >
+                            <FontAwesomeIcon icon={faTwitterSquare} />
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 

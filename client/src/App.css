@@ -301,6 +301,144 @@
   font-size: 22px;
 }
 
+.teacher .feat .students-container {
+  width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
+  perspective: 1000px;
+}
+.teacher .feat .students-container .show-students {
+  padding: 20px;
+  background-color: #ea907a;
+  border-radius: 8px;
+  position: relative;
+  height: 200px;
+  margin-bottom: 10px;
+}
+.teacher .feat .students-container .show-students .student-info-front,
+.teacher .feat .students-container .show-students .student-info-back {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 20px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 92%;
+  height: 80%;
+  backface-visibility: hidden;
+  transition: all 1s linear;
+}
+.teacher .feat .students-container .show-students .student-info-front {
+  z-index: 5;
+}
+.teacher .feat .students-container .show-students .student-info-back {
+  transform: rotateX(180deg);
+}
+.teacher .feat .students-container .show-students:hover .student-info-front {
+  transform: rotateX(180deg);
+}
+.teacher .feat .students-container .show-students:hover .student-info-back {
+  transform: rotateX(360deg);
+}
+.teacher .feat .students-container .show-students .student-info-front .img-std {
+  border: 1px solid #000;
+  float: left;
+  width: 30%;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: auto;
+}
+.teacher
+  .feat
+  .students-container
+  .show-students
+  .student-info-front
+  .img-std
+  img {
+  width: 100%;
+}
+.teacher
+  .feat
+  .students-container
+  .show-students
+  .student-info-front
+  .info-std {
+  float: left;
+  width: 60%;
+  margin-left: 10%;
+}
+.teacher
+  .feat
+  .students-container
+  .show-students
+  .student-info-front
+  .info-std
+  p {
+  margin: 0;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.teacher
+  .feat
+  .students-container
+  .show-students
+  .student-info-front
+  .info-std
+  span {
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(87, 87, 87);
+}
+.teacher .feat .students-container .show-students .student-info-back ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  list-style: none;
+}
+.teacher .feat .students-container .show-students .student-info-back ul li {
+  display: inline-block;
+  border: 2px solid #f1d5b1;
+  padding: 0 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-family: 'Cabin', sans-serif;
+  border-radius: 50%;
+  background-color: #fbc687;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  margin: 33px 20px auto 10px;
+}
+.teacher
+  .feat
+  .students-container
+  .show-students
+  .student-info-back
+  ul
+  li:hover {
+  background-color: #aacdbe;
+  border: 2px solid #97a8a1;
+  box-shadow: 5px 5px 8px #aacdbe;
+}
+.teacher
+  .feat
+  .students-container
+  .show-students
+  .student-info-back
+  ul
+  li:hover
+  a {
+  color: #000;
+}
+.teacher .feat .students-container .show-students .student-info-back ul li a {
+  color: rgb(75, 71, 71);
+  padding: 0;
+  margin: 0;
+  transition: color 0.3s ease-in-out;
+}
+
 /* End Features */
 
 /* Start Footer */
@@ -315,7 +453,7 @@ footer {
 
 /* End Footer */
 
-/* ========================== Start Teacher Style ========================== */
+/* ========================== End Teacher Style ========================== */
 
 /* ========================== Start Student Style ========================== */
 
@@ -512,4 +650,4 @@ footer {
 
 /* End Github Style */
 
-/* ========================== Start Student Style ========================== */
+/* ========================== End Student Style ========================== */

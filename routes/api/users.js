@@ -39,6 +39,9 @@ router.post(
 
       // Get users gravatar 'later'
 
+      // make the social links
+      var gitHubLink = `https://github.com/${gitUser}`;
+
       // make new user
       user = new User({
         fName,
@@ -46,6 +49,7 @@ router.post(
         password,
         type,
         gitUser,
+        gitHubLink,
       });
 
       // Encrypt password
@@ -82,5 +86,16 @@ router.post(
     }
   }
 );
+
+// @route  GET api/users
+// @desc   get all user
+router.get('/', async (req, res) => {
+  try {
+    let users = await User.find({ type: 'student' }).select('-password');
+    res.json(users);
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
+});
 
 module.exports = router;
