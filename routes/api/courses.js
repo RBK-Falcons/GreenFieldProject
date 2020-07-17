@@ -28,6 +28,7 @@ router.post('/addCourse', async (req, res) => {
   }
 });
 
+
 // @route GET All courses /api/courses
 router.get('/', async (req, res) => {
   let courses = await Course.find({})
@@ -58,5 +59,19 @@ router.get('/:type', async (req, res) => {
       res.status(500).send('Server error');
     });
 });
+
+
+router.put('/:title', async (req, res)=>{
+  const {title} = req.params;
+  const {type, videoUrl, description} = req.body
+  const vId = videoUrl.substr(32, 11);
+  var x = 'https://www.youtube.com/embed/' + vId;
+  const videoImg = 'https://img.youtube.com/vi/' + vId + '/0.jpg';
+  await Course.where({title})
+  .update({$set: {type, videoUrl:x, description, videoImg}})
+  .exec()
+  .then(response => res.send("data updated"))
+  .catch(err=> res.send(err))
+})
 
 module.exports = router;
