@@ -27,6 +27,7 @@ class Teacher extends React.Component {
     userName: '',
     gitUser: '',
     allStudents: [],
+    courses:[]
   };
 
   async componentDidMount() {
@@ -34,6 +35,7 @@ class Teacher extends React.Component {
     this.setState({
       userName: fName,
       gitUser,
+
     });
     // try {
     //   let users = await axios.get('/api/users');
@@ -52,6 +54,20 @@ class Teacher extends React.Component {
         console.error(err);
       });
     waterMellon();
+
+    await axios
+    .get('/api/courses')
+    .then(res => {
+      this.setState({
+        courses: res.data,
+
+      });
+      //console.log(this.state.courses);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  
   }
 
   // this function to handle Data From add videos Form
@@ -271,6 +287,11 @@ class Teacher extends React.Component {
                         className='custom-select'
                       >
                         <option value>Choose...</option>
+                        {this.state.courses.map((element, index)=>{
+                          return(
+                            <option value = {element.title} key={index}>{element.title}</option>
+                          )
+                        })}
                       </select>
                     </div>
 
