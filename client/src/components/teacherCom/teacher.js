@@ -30,6 +30,10 @@ class Teacher extends React.Component {
   };
 
   async componentDidMount() {
+    // if (this.props.location.state === undefined) {
+    //   this.props.history.push('/');
+    // }
+
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
