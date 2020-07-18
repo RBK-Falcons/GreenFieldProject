@@ -696,7 +696,7 @@ footer {
 
 /* Start Loading Page */
 .loading {
-  background: #aacdbe;
+  background: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -733,7 +733,7 @@ footer {
   -o-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
-  color: #fff;
+  color: #ea907a;
 }
 .loading #load div:nth-child(2) {
   animation-delay: 0.2s;
