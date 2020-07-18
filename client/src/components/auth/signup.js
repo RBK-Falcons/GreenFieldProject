@@ -3,6 +3,7 @@ import $ from 'jquery';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import waterMellon from '../../main';
+import Loading from '../loadingPage/loading';
 
 class Signup extends React.Component {
   state = {
@@ -68,6 +69,7 @@ class Signup extends React.Component {
     }
     return (
       <div className='auth-wrapper'>
+        <Loading />
         <div className='auth-inner'>
           {/* Start Form Sign Up */}
 

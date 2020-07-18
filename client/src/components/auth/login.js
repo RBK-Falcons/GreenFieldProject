@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import Loading from '../loadingPage/loading';
 
 class Login extends React.Component {
   state = {
@@ -75,6 +76,7 @@ class Login extends React.Component {
     }
     return (
       <div className='auth-wrapper'>
+        <Loading />
         <div className='auth-inner'>
           {/* Start Form Login Page */}
           <form onSubmit={this.handleSubmit.bind(this)}>

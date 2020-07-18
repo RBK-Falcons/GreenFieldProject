@@ -14,6 +14,8 @@ import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+import Loading from '../loadingPage/loading';
+
 // import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 
 class Teacher extends React.Component {
@@ -129,6 +131,7 @@ class Teacher extends React.Component {
   render() {
     return (
       <div className='teacher'>
+        <Loading />
         {/* Start Header */}
 
         <div className='header'>

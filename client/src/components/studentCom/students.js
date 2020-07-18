@@ -11,6 +11,7 @@ import waterMellon from '../../main';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import Loading from '../loadingPage/loading';
 
 class Student extends React.Component {
   state = {
@@ -108,6 +109,7 @@ class Student extends React.Component {
   render() {
     return (
       <div className='students'>
+        <Loading />
         {/* Start Header */}
         <div className='header'>
           <div className='overlay'>

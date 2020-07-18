@@ -1,5 +1,6 @@
 import React from 'react';
 import waterMellon from '../../main';
+import Loading from '../loadingPage/loading';
 
 class Landing extends React.Component {
   state = {};
@@ -12,7 +13,7 @@ class Landing extends React.Component {
     return (
       <div className='landing'>
         {/* Start Header */}
-
+        <Loading />
         <div className='header'>
           <div className='overlay'>
             <div className='container table'>
