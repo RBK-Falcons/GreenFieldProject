@@ -16,6 +16,7 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 import Loading from '../loadingPage/loading';
 
+// for the showing vidoes
 // import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 
 class Teacher extends React.Component {
@@ -28,7 +29,6 @@ class Teacher extends React.Component {
     gitUser: '',
     allStudents: [],
     courses: [],
-    videos: [],
   };
 
   async componentDidMount() {
@@ -74,9 +74,15 @@ class Teacher extends React.Component {
     });
   }
 
-  setTypeVal() {
+  setTypeVal(e) {
     this.setState({
-      type: $('.custom-select').val(),
+      type: $(e.target).val(),
+    });
+  }
+
+  setTitleVal(e) {
+    this.setState({
+      title: $(e.target).val(),
     });
   }
 
@@ -94,7 +100,6 @@ class Teacher extends React.Component {
         description,
       })
       .then(res => {
-        console.log(res.data);
         this.setState({
           title: '',
           type: '',
@@ -115,12 +120,25 @@ class Teacher extends React.Component {
     this.props.history.push('/sign-in');
   }
 
-  async getAllVideos() {
+  async editCourse(e) {
+    e.preventDefault();
+    const { title, type, videoUrl, description } = this.state;
     await axios
-      .get('/api/courses')
+      .put(`/api/courses/${this.state.title}`, {
+        title,
+        type,
+        videoUrl,
+        description,
+      })
       .then(response => {
         this.setState({
-          videos: response.data,
+          title: '',
+          type: '',
+          videoUrl: '',
+          description: '',
+          userName: '',
+          gitUser: '',
+          allStudents: [],
         });
       })
       .catch(err => {
@@ -283,13 +301,13 @@ class Teacher extends React.Component {
                 <div id='edit'>
                   {/* Start Edit Video Section */}
 
-                  <form onSubmit={this.handleSubmit.bind(this)}>
+                  <form onSubmit={this.editCourse.bind(this)}>
                     <div className='choice'>
                       <div className='choice-head'>
                         <label>Video Title</label>
                       </div>
                       <select
-                        onChange={this.setTypeVal.bind(this)}
+                        onChange={this.setTitleVal.bind(this)}
                         className='custom-select'
                       >
                         <option value>Choose...</option>
