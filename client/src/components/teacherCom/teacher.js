@@ -16,7 +16,7 @@ import { faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 
-import img from '../../img/avatar_profile.jpg';
+// import img from '../../img/avatar_profile.jpg';
 
 class Teacher extends React.Component {
   state = {
@@ -27,26 +27,21 @@ class Teacher extends React.Component {
     userName: '',
     gitUser: '',
     allStudents: [],
-    courses:[]
+    courses: [],
   };
 
   async componentDidMount() {
-    // if (this.props.location.state === undefined) {
-    //   this.props.history.push('/');
-    // }
+    if (this.props.location.state === undefined) {
+      this.props.history.push('/');
+      return;
+    }
 
     const { fName, gitUser } = this.props.location.state;
     this.setState({
       userName: fName,
       gitUser,
-
     });
-    // try {
-    //   let users = await axios.get('/api/users');
-    //   console.log('---->', users.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+
     await axios
       .get('/api/users')
       .then(res => {
@@ -60,18 +55,15 @@ class Teacher extends React.Component {
     waterMellon();
 
     await axios
-    .get('/api/courses')
-    .then(res => {
-      this.setState({
-        courses: res.data,
-
+      .get('/api/courses')
+      .then(res => {
+        this.setState({
+          courses: res.data,
+        });
+      })
+      .catch(err => {
+        console.error(err);
       });
-      //console.log(this.state.courses);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-  
   }
 
   // this function to handle Data From add videos Form
@@ -209,7 +201,6 @@ class Teacher extends React.Component {
               {/* Start Dashboard Section */}
               <section>
                 <div id='add'>
-
                   {/* Start Add Video Section */}
                   <form onSubmit={this.handleSubmit.bind(this)}>
                     <div className='form-group'>
@@ -269,14 +260,11 @@ class Teacher extends React.Component {
                   </form>
 
                   {/* End Add Video Section */}
-
                 </div>
                 <div id='view'>
-
                   {/* Start View Video Section */}
                   <h2>view Video</h2>
                   {/* End View Video Section */}
-
                 </div>
                 <div id='edit'>
                   {/* Start Edit Video Section */}
@@ -291,10 +279,12 @@ class Teacher extends React.Component {
                         className='custom-select'
                       >
                         <option value>Choose...</option>
-                        {this.state.courses.map((element, index)=>{
-                          return(
-                            <option value = {element.title} key={index}>{element.title}</option>
-                          )
+                        {this.state.courses.map((element, index) => {
+                          return (
+                            <option value={element.title} key={index}>
+                              {element.title}
+                            </option>
+                          );
                         })}
                       </select>
                     </div>
@@ -342,12 +332,10 @@ class Teacher extends React.Component {
                     </button>
                   </form>
 
-
                   {/* End Edit Video Section */}
                 </div>
               </section>
               {/* End Dashboard Section */}
-
             </div>
           </div>
 
@@ -367,7 +355,7 @@ class Teacher extends React.Component {
                       <div className='img-std'>
                         <img
                           src='https://bit.ly/3eBREZQ'
-                          width="150"
+                          width='150'
                           alt='...'
                         />
                       </div>
