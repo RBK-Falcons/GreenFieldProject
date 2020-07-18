@@ -2,11 +2,11 @@ import React from 'react';
 import $ from 'jquery';
 class Loading extends React.Component {
   componentDidMount() {
-    // $(window).on('load', function () {
-    setTimeout(() => {
+    $(window).on('load', function () {
+      // setTimeout(() => {
       $('.loading').fadeOut(1000);
-    }, 2000);
-    // });
+      // }, 2000);
+    });
   }
   render() {
     return (
