@@ -10,7 +10,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import waterMellon from '../../main';
 import $ from 'jquery';
-
+import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -28,6 +28,7 @@ class Teacher extends React.Component {
     gitUser: '',
     allStudents: [],
     courses: [],
+    videos: [],
   };
 
   async componentDidMount() {
@@ -112,6 +113,19 @@ class Teacher extends React.Component {
   logOut() {
     localStorage.removeItem('token');
     this.props.history.push('/sign-in');
+  }
+
+  async getAllVideos() {
+    await axios
+      .get('/api/courses')
+      .then(response => {
+        this.setState({
+          videos: response.data,
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
@@ -263,7 +277,9 @@ class Teacher extends React.Component {
                 </div>
                 <div id='view'>
                   {/* Start View Video Section */}
+
                   <h2>view Video</h2>
+
                   {/* End View Video Section */}
                 </div>
                 <div id='edit'>

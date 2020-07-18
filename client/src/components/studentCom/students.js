@@ -11,7 +11,6 @@ import waterMellon from '../../main';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faCodeBranch } from '@fortawesome/free-solid-svg-icons';
-// import { Redirect } from 'react-router-dom';
 
 class Student extends React.Component {
   state = {
@@ -25,11 +24,13 @@ class Student extends React.Component {
       this.props.history.push('/');
       return;
     }
+
     const { fName, gitUser } = this.props.location.state;
+
     this.setState({
       userName: fName,
     });
-    console.log(gitUser);
+
     fetch(`https://api.github.com/users/${gitUser}/repos`)
       .then(response => {
         if (response.ok) {
@@ -41,11 +42,11 @@ class Student extends React.Component {
         this.setState({
           repos: data,
         });
-        console.log(this.state.repos);
       })
       .catch(error => {
         console.log(error);
       });
+
     waterMellon();
   }
 

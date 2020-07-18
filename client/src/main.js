@@ -41,6 +41,29 @@ const waterMellon = () => {
     //         effectsOut: 'fade translateX(-100%)'
     //     }
     // })
+
+    // this function to handle the value from <a></a> tag and insert it in (hidden input)
+    $('.list-group-item-action').click(function () {
+      $('#typeOfUser').val($(this).data('type'));
+      console.log($('#typeOfUser').val());
+
+      if ($(this).hasClass('std')) {
+        $('.scrollspy-example').slideDown();
+      } else {
+        $('.scrollspy-example').slideUp();
+      }
+    });
+
+    $('span.list-group-item').click(function () {
+      $(this)
+        .css({
+          background: '#fbc687',
+        })
+        .siblings()
+        .css({
+          background: '#fff',
+        });
+    });
   });
 };
 

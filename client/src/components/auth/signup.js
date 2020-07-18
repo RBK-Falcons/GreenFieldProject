@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import waterMellon from '../../main';
 
 class Signup extends React.Component {
   state = {
@@ -12,6 +13,10 @@ class Signup extends React.Component {
     gitUser: '',
     success: false,
   };
+
+  componentDidMount() {
+    waterMellon();
+  }
 
   // This function for handle changing from inputs
   handleChange(e) {
@@ -166,58 +171,4 @@ class Signup extends React.Component {
   }
 }
 
-/* Start jQuery Code */
-
-$(document).ready(function () {
-  // this function to handle the value from <a></a> tag and insert it in (hidden input)
-  $('.list-group-item-action').click(function () {
-    $('#typeOfUser').val($(this).data('type'));
-    console.log($('#typeOfUser').val());
-
-    if ($(this).hasClass('std')) {
-      $('.scrollspy-example').slideDown();
-    } else {
-      $('.scrollspy-example').slideUp();
-    }
-  });
-
-  $('span.list-group-item').click(function () {
-    $(this)
-      .css({
-        background: '#fbc687',
-      })
-      .siblings()
-      .css({
-        background: '#fff',
-      });
-  });
-});
-
-/* End jQuery Code */
-
 export default Signup;
-
-// function setTypeVal() {
-
-// }
-//     $(document).ready(function () {
-//         $('.list-group-item-action').click(function () {
-//             $('#typeOfUser').val($(this.data('type'))
-//             console.log($('#typeOfUser').val())
-//         })
-//     });
-
-// var el = document.getElementsByClassName('list-group-item-action');
-
-// el.addEventListener('click', function () {
-//     var type = el.getAttribute('data-type');
-//     var inputT = document.getElementById('typeOfUser');
-//     inputT.value = type;
-//     console.log(inputT.value)
-// })
-
-// $('.list-group-item-action').click(function () {
-//     console.log($('#typeOfUser').val());
-//     $('#typeOfUser').attr('value', $(this).data('type'));
-//     console.log($('#typeOfUser').val());
-// });
