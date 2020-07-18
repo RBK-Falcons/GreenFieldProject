@@ -10,13 +10,11 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import waterMellon from '../../main';
 import $ from 'jquery';
-import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 import { faCodepen } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
-
-// import img from '../../img/avatar_profile.jpg';
+// import { faPlayCircle } from '@fortawesome/free-regular-svg-icons';
 
 class Teacher extends React.Component {
   state = {
@@ -154,9 +152,6 @@ class Teacher extends React.Component {
                 </div>
               </div>
             </div>
-            {/* <span class="arrow">
-                            <FontAwesomeIcon icon={faChevronDown} />
-                        </span> */}
           </div>
         </div>
 

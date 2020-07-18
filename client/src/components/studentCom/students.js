@@ -76,7 +76,6 @@ class Student extends React.Component {
         this.setState({
           videos: response.data,
         });
-        console.log(response.data);
       })
       .catch(err => {
         console.error(err);
@@ -226,7 +225,6 @@ class Student extends React.Component {
                     </table>
                   );
                 })}
-                {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/kihxoUcFf9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
               </section>
             </div>
           </div>

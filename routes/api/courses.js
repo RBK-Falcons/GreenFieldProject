@@ -1,12 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Course = require('../../models/Course');
-const { response } = require('express');
-const { route } = require('./users');
 
 // @route  POST api/courses
 // @desc   add course
-
 router.post('/addCourse', async (req, res) => {
   const { title, type, videoUrl, description } = req.body;
   const vId = videoUrl.substr(32, 11);
@@ -28,10 +25,9 @@ router.post('/addCourse', async (req, res) => {
   }
 });
 
-
 // @route GET All courses /api/courses
 router.get('/', async (req, res) => {
-  let courses = await Course.find({})
+  await Course.find({})
     .then(response => {
       if (response.length == 0) {
         // The error thrown when there is no data in the response
@@ -47,7 +43,7 @@ router.get('/', async (req, res) => {
 // @route GET courses with same title /api/courses/:title
 router.get('/:type', async (req, res) => {
   const { type } = req.params;
-  let courses = await Course.find({ type })
+  await Course.find({ type })
     .then(response => {
       if (response.length == 0) {
         // The error thrown when there is no data in the response
@@ -60,18 +56,19 @@ router.get('/:type', async (req, res) => {
     });
 });
 
-
-router.put('/:title', async (req, res)=>{
-  const {title} = req.params;
-  const {type, videoUrl, description} = req.body
+// @ route api/courses/:title
+// @ desc update one course base on it's title
+router.put('/:title', async (req, res) => {
+  const { title } = req.params;
+  const { type, videoUrl, description } = req.body;
   const vId = videoUrl.substr(32, 11);
   var x = 'https://www.youtube.com/embed/' + vId;
   const videoImg = 'https://img.youtube.com/vi/' + vId + '/0.jpg';
-  await Course.where({title})
-  .update({$set: {type, videoUrl:x, description, videoImg}})
-  .exec()
-  .then(response => res.send("data updated"))
-  .catch(err=> res.send(err))
-})
+  await Course.where({ title })
+    .update({ $set: { type, videoUrl: x, description, videoImg } })
+    .exec()
+    .then(response => res.send('data updated'))
+    .catch(err => res.send(err));
+});
 
 module.exports = router;

@@ -12,9 +12,8 @@ class Login extends React.Component {
 
   componentDidMount() {
     var tok = localStorage.getItem('token');
-    console.log(tok);
+
     if (tok) {
-      console.log('token is empty');
       this.getUser(tok);
     }
   }
