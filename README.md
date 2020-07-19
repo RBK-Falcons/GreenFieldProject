@@ -12,7 +12,7 @@ It Provides An Interface That Provides The Required Academic Content In One Plac
 # Quick Start
 To Open this site Localy Run This Command On Root Folder  and Client Folder
 
-'npm i' || 'npm install'
+"npm install"
 
 And Now You Can Run the app locally By Write This Commad In Root Folder
 
