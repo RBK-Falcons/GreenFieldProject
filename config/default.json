@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://Falcons:Falcons@greenfield.64vuq.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "Falcons"
+  "mongoURI": "your mongoDB url",
+  "jwtSecret": "your passwrod"
 }
